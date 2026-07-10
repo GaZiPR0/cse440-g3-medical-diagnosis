@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COVID-19 — Condition Guide</title>
+  <style>
+    :root{--accent:#0891b2;--accent-dark:#155e75;--accent-soft:#ecfeff;--accent-border:#a5f3fc;--ink:#1f2933;--muted:#5b6b7b;--bg:#f0fafc;--card:#fff;--danger:#dc2626;--danger-soft:#fef2f2;--radius:16px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+    .wrap{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+    .hero{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:54px 20px 66px;text-align:center;}
+    .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:999px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{margin:0;font-size:2.7rem;letter-spacing:-.5px;}
+    .hero p{margin:14px auto 0;max-width:640px;font-size:1.06rem;opacity:.96;}
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-38px 0 30px;}
+    .fact{background:var(--card);border-radius:14px;padding:15px 18px;box-shadow:0 8px 24px rgba(30,40,60,.09);border-top:3px solid var(--accent);}
+    .fact .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+    .fact .v{font-size:1rem;font-weight:600;margin-top:4px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:26px 28px;margin:18px 0;box-shadow:0 6px 18px rgba(30,40,60,.06);border:1px solid #e9edf2;}
+    .card h2{margin:0 0 8px;font-size:1.4rem;color:var(--accent-dark);display:flex;align-items:center;gap:10px;}
+    .card h3{margin:20px 0 6px;font-size:1.06rem;color:var(--ink);}
+    .lead{color:var(--muted);margin-top:4px;}
+    ul.clean{list-style:none;padding:0;margin:14px 0;}
+    ul.clean li{position:relative;padding:7px 0 7px 28px;border-bottom:1px dashed #eef1f6;}
+    ul.clean li:last-child{border-bottom:0;}
+    ul.clean li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+    ul.clean li strong{color:var(--accent-dark);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+    .pill{background:var(--accent-soft);color:var(--accent-dark);border:1px solid var(--accent-border);padding:6px 12px;border-radius:999px;font-size:.9rem;font-weight:500;}
+    .callout{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.97rem;}
+    .callout.warn{background:var(--danger-soft);border:1px solid #fecaca;color:#7f1d1d;}
+    .callout.info{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent-dark);}
+    .callout strong{display:block;margin-bottom:4px;}
+    footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:34px;padding-top:18px;border-top:1px solid #e2e8f0;}
+    @media(max-width:560px){.hero h1{font-size:2rem;}}
+  </style>
+</head>
+<body>
+<header class="hero">
+  <span class="badge">Viral Respiratory Infection</span>
+  <h1>COVID-19 (Coronavirus)</h1>
+  <p>A contagious respiratory illness caused by the SARS-CoV-2 virus. It spreads mainly through droplets in the air when an infected person coughs, sneezes, talks, or breathes.</p>
+</header>
+<div class="wrap">
+
+  <section class="facts">
+    <div class="fact"><div class="k">Caused by</div><div class="v">SARS-CoV-2 virus</div></div>
+    <div class="fact"><div class="k">Spreads via</div><div class="v">Airborne droplets</div></div>
+    <div class="fact"><div class="k">Contagious?</div><div class="v">Yes — highly</div></div>
+    <div class="fact"><div class="k">Prevention</div><div class="v">Vaccines &amp; hygiene</div></div>
+  </section>
+
+  <section class="card">
+    <h2>🦠 Overview</h2>
+    <p><strong>COVID-19</strong> is a disease caused by a coronavirus called SARS-CoV-2. It spreads from person to person, mostly through small respiratory droplets and particles released when a sick person coughs, sneezes, speaks, or even just breathes near others. Most people develop mild to moderate illness and recover without special treatment, but some — especially older adults and those with existing health conditions — can become seriously ill.</p>
+  </section>
+
+  <section class="card">
+    <h2>🩺 Symptoms</h2>
+    <p>Symptoms usually appear 2–14 days after exposure and range from very mild to severe. Common ones include:</p>
+    <div class="pills">
+      <span class="pill">Fever or chills</span><span class="pill">Cough</span><span class="pill">Tiredness</span>
+      <span class="pill">Shortness of breath</span><span class="pill">Loss of smell or taste</span>
+      <span class="pill">Sore throat</span><span class="pill">Body aches</span><span class="pill">Headache</span>
+    </div>
+    <div class="callout warn">
+      <strong>⚠️ Emergency warning signs — seek help immediately</strong>
+      Trouble breathing, persistent chest pain or pressure, confusion, inability to stay awake, or bluish lips or face. Call emergency services right away.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🔍 Diagnosis</h2>
+    <ul class="clean">
+      <li><strong>PCR test</strong> — a swab from the nose or throat is analysed in a lab; the most accurate method for detecting active infection.</li>
+      <li><strong>Rapid antigen test</strong> — gives results in minutes and can be done at home, though it is slightly less sensitive than PCR.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>💊 Treatment &amp; Care</h2>
+    <p>Most cases can be managed at home with rest and self-care:</p>
+    <ul class="clean">
+      <li>Stay home and rest to let your body recover.</li>
+      <li>Drink plenty of fluids to stay hydrated.</li>
+      <li>Take paracetamol (acetaminophen) for fever or body aches.</li>
+      <li>Isolate from others to avoid spreading the virus.</li>
+    </ul>
+    <p>For people at higher risk, a doctor may prescribe antiviral medication. Severe cases may need hospital care with oxygen therapy or other support.</p>
+    <p class="lead">See a doctor if breathing becomes difficult, symptoms get worse, or you feel very unwell.</p>
+  </section>
+
+  <section class="card">
+    <h2>🛡️ Prevention</h2>
+    <ul class="clean">
+      <li>Stay up to date with recommended COVID-19 vaccines.</li>
+      <li>Wash your hands often with soap, or use hand sanitiser.</li>
+      <li>Cover your mouth and nose when you cough or sneeze.</li>
+      <li>Wear a mask if you're sick or around people who are ill.</li>
+      <li>Keep distance from people who are coughing or unwell, and ventilate indoor spaces.</li>
+    </ul>
+  </section>
+
+  <footer>
+    This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.
+  </footer>
+</div>
+</body>
+</html>
