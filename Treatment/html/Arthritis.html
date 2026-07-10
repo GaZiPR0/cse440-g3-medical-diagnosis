@@ -1,77 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arthritis Guide</title>
-<style>
-  body { font-family: 'Trebuchet MS', Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 30px 20px; background: #fdfdfb; color: #23272a; }
-  h1 { text-align: center; color: #7a3b2e; }
-  h2 { color: #7a3b2e; margin-top: 32px; }
-  h3 { color: #a15c47; margin-top: 20px; }
-  .card { background: #fff; border: 1px solid #e2ded8; border-radius: 8px; padding: 16px 20px; margin: 14px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-  ul.plain { list-style: square; padding-left: 22px; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arthritis — Condition Guide</title>
+  <style>
+    :root{--accent:#7c3aed;--accent-dark:#5b21b6;--accent-soft:#f5f3ff;--accent-border:#ddd6fe;--ink:#1f2933;--muted:#5b6b7b;--bg:#f7f5fc;--card:#fff;--danger:#dc2626;--danger-soft:#fef2f2;--radius:16px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+    .wrap{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+    .hero{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:54px 20px 66px;text-align:center;}
+    .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:999px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{margin:0;font-size:2.7rem;letter-spacing:-.5px;}
+    .hero p{margin:14px auto 0;max-width:640px;font-size:1.06rem;opacity:.96;}
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-38px 0 30px;}
+    .fact{background:var(--card);border-radius:14px;padding:15px 18px;box-shadow:0 8px 24px rgba(30,40,60,.09);border-top:3px solid var(--accent);}
+    .fact .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+    .fact .v{font-size:1rem;font-weight:600;margin-top:4px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:26px 28px;margin:18px 0;box-shadow:0 6px 18px rgba(30,40,60,.06);border:1px solid #e9edf2;}
+    .card h2{margin:0 0 8px;font-size:1.4rem;color:var(--accent-dark);display:flex;align-items:center;gap:10px;}
+    .card h3{margin:20px 0 6px;font-size:1.06rem;color:var(--ink);}
+    .lead{color:var(--muted);margin-top:4px;}
+    ul.clean{list-style:none;padding:0;margin:14px 0;}
+    ul.clean li{position:relative;padding:7px 0 7px 28px;border-bottom:1px dashed #eef1f6;}
+    ul.clean li:last-child{border-bottom:0;}
+    ul.clean li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+    ul.clean li strong{color:var(--accent-dark);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+    .pill{background:var(--accent-soft);color:var(--accent-dark);border:1px solid var(--accent-border);padding:6px 12px;border-radius:999px;font-size:.9rem;font-weight:500;}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0;}
+    .split .box{border:1px solid var(--accent-border);border-radius:12px;padding:16px 18px;background:var(--accent-soft);}
+    .split .box h3{margin:0 0 6px;color:var(--accent-dark);}
+    .callout{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.97rem;}
+    .callout.info{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent-dark);}
+    .callout strong{display:block;margin-bottom:4px;}
+    footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:34px;padding-top:18px;border-top:1px solid #e2e8f0;}
+    @media(max-width:560px){.hero h1{font-size:2rem;}.split{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body>
+<header class="hero">
+  <span class="badge">Joint Condition</span>
+  <h1>Arthritis</h1>
+  <p>Inflammation of one or more joints, causing pain and stiffness that often worsens with age. It's not a single disease — there are more than 100 types, led by osteoarthritis and rheumatoid arthritis.</p>
+</header>
+<div class="wrap">
 
-<h1>Arthritis Guide</h1>
+  <section class="facts">
+    <div class="fact"><div class="k">Category</div><div class="v">Joint / musculoskeletal</div></div>
+    <div class="fact"><div class="k">Main symptoms</div><div class="v">Joint pain &amp; stiffness</div></div>
+    <div class="fact"><div class="k">Leading types</div><div class="v">Osteoarthritis, RA</div></div>
+    <div class="fact"><div class="k">Curable?</div><div class="v">No — but manageable</div></div>
+  </section>
 
-<div class="card">
-<p><strong>Arthritis</strong> refers to joint inflammation causing pain and stiffness that tends to worsen over time. The two leading forms are osteoarthritis and rheumatoid arthritis.</p>
-<p>Osteoarthritis wears down the cartilage cushioning joint bones. Rheumatoid arthritis, on the other hand, is autoimmune — the body's defenses mistakenly attack the joint lining.</p>
-<p>Gout stems from uric acid crystal buildup, while infections or conditions like psoriasis and lupus can trigger other arthritis types.</p>
+  <section class="card">
+    <h2>🦴 Overview</h2>
+    <p><strong>Arthritis</strong> refers to inflammation of the joints, which causes pain and stiffness that tends to worsen over time. It is an umbrella term covering many conditions. The two leading forms work in very different ways:</p>
+    <div class="split">
+      <div class="box"><h3>Osteoarthritis (OA)</h3><p>The "wear-and-tear" type. The cartilage that cushions the ends of the bones gradually breaks down, so the bones rub together.</p></div>
+      <div class="box"><h3>Rheumatoid arthritis (RA)</h3><p>An autoimmune disease. The body's own defences mistakenly attack the lining of the joints, causing inflammation.</p></div>
+    </div>
+    <p>Other forms include <strong>gout</strong>, caused by a buildup of uric acid crystals, and arthritis triggered by infections or by conditions such as psoriasis and lupus.</p>
+  </section>
+
+  <section class="card">
+    <h2>🩺 Symptoms</h2>
+    <div class="pills">
+      <span class="pill">Joint pain</span><span class="pill">Stiffness</span><span class="pill">Swelling</span>
+      <span class="pill">Redness &amp; warmth</span><span class="pill">Reduced range of motion</span>
+    </div>
+    <p>Symptoms may come and go, and can be mild, moderate, or severe. Stiffness is often worst first thing in the morning or after a period of rest.</p>
+  </section>
+
+  <section class="card">
+    <h2>🔍 Getting Diagnosed</h2>
+    <p>A physical exam checks the joints for swelling, redness, warmth, and range of motion. Further testing depends on the suspected type.</p>
+    <h3>Lab analysis</h3>
+    <p>Blood, urine, and joint-fluid samples help narrow down the diagnosis. Joint fluid is drawn with a needle after the area is numbed.</p>
+    <h3>Imaging</h3>
+    <ul class="clean">
+      <li><strong>X-ray</strong> — shows cartilage loss and bone damage; useful for tracking progression.</li>
+      <li><strong>CT scan</strong> — combines X-rays from many angles into cross-sectional views of bone and soft tissue.</li>
+      <li><strong>MRI</strong> — uses magnetic fields for detailed images of cartilage, tendons, and ligaments.</li>
+      <li><strong>Ultrasound</strong> — images soft tissue and joint fluid, and can guide needle procedures.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>💊 Treatment</h2>
+    <p>The core goals are to reduce pain and prevent further joint damage. Heat and ice therapy, and mobility aids such as canes or walkers, help manage discomfort day to day.</p>
+    <h3>Medications</h3>
+    <ul class="clean">
+      <li><strong>Analgesics</strong> (e.g. acetaminophen) — relieve pain without reducing inflammation.</li>
+      <li><strong>NSAIDs</strong> (e.g. ibuprofen) — ease both pain and inflammation; caution with blood thinners.</li>
+      <li><strong>Topical creams</strong> (menthol/capsaicin) — interrupt pain signals locally.</li>
+      <li><strong>Immunosuppressants &amp; corticosteroids</strong> (prednisone, cortisone) — dampen inflammation.</li>
+    </ul>
+    <p>People with rheumatoid arthritis may also be prescribed <strong>DMARDs</strong> to control the overactive immune response.</p>
+    <h3>Surgery</h3>
+    <p>In advanced cases, joint replacement (commonly hip or knee) or joint fusion (for fingers or wrists) may be recommended.</p>
+    <h3>Physical therapy</h3>
+    <p>Targeted exercises to strengthen the muscles around affected joints are a cornerstone of long-term management.</p>
+  </section>
+
+  <section class="card">
+    <h2>🥗 Lifestyle &amp; Self-Care</h2>
+    <p>Maintaining a healthy weight lowers the risk of osteoarthritis and eases existing symptoms. An antioxidant-rich diet — fruits, vegetables, herbs, fish, and nuts — helps fight inflammation, while fried, processed, and high-meat foods are best kept to a minimum.</p>
+    <p>Low-impact exercise such as swimming keeps joints flexible without added stress, balanced with adequate rest.</p>
+    <div class="callout info">
+      <strong>ℹ️ Simple home exercises</strong>
+      Neck tilts and rotations for neck pain · finger and thumb bends for hand pain · leg raises and hamstring stretches for knee pain.
+    </div>
+  </section>
+
+  <footer>
+    This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.
+  </footer>
 </div>
-
-<h2>Getting Diagnosed</h2>
-<div class="card">
-<p>A physical exam checks for joint swelling, redness, warmth, and range of motion. Further testing depends on the suspected type.</p>
-
-<h3>Lab Analysis</h3>
-<p>Blood, urine, and joint fluid samples help narrow down the diagnosis. Joint fluid is drawn via needle after numbing the area.</p>
-
-<h3>Imaging Options</h3>
-<ul class="plain">
-<li><strong>X-ray</strong> — shows cartilage loss and bone damage; useful for tracking progression over time.</li>
-<li><strong>CT scan</strong> — combines multi-angle X-rays into cross-sectional views of bone and soft tissue.</li>
-<li><strong>MRI</strong> — uses magnetic fields for detailed images of cartilage, tendons, and ligaments.</li>
-<li><strong>Ultrasound</strong> — images soft tissue and joint fluid; also guides needle-based procedures.</li>
-</ul>
-</div>
-
-<h2>Treatment Strategies</h2>
-<div class="card">
-<p>The core goals: reduce pain and prevent further joint damage. Heat/ice therapy and mobility aids like canes or walkers can help manage discomfort day to day.</p>
-
-<h3>Medication Options</h3>
-<ul class="plain">
-<li><strong>Analgesics</strong> (e.g., acetaminophen, hydrocodone) — pain relief without anti-inflammatory effects.</li>
-<li><strong>NSAIDs</strong> (e.g., ibuprofen, salicylates) — reduce both pain and inflammation; caution needed with blood thinners.</li>
-<li><strong>Topical creams</strong> (menthol/capsaicin) — interrupt pain signals locally.</li>
-<li><strong>Immunosuppressants</strong> (prednisone, cortisone) — dampen inflammation.</li>
-</ul>
-<p>Rheumatoid arthritis patients may also be prescribed corticosteroids or DMARDs to control immune activity.</p>
-
-<h3>Surgical Options</h3>
-<p>Joint replacement (commonly hip or knee) or joint fusion (for fingers/wrists) may be recommended in advanced cases.</p>
-
-<h3>Physical Therapy</h3>
-<p>Targeted strengthening exercises around affected joints form a cornerstone of long-term management.</p>
-</div>
-
-<h2>Lifestyle Factors</h2>
-<div class="card">
-<p>Maintaining a healthy weight reduces OA risk and eases existing symptoms. An antioxidant-rich diet — fruits, vegetables, herbs, fish, nuts — helps fight inflammation, while fried, processed, dairy, and high-meat diets should be minimized.</p>
-<p>Some evidence links gluten antibodies to rheumatoid arthritis, and a 2015 study recommended gluten-free eating for undifferentiated connective tissue disease as well.</p>
-<p>Low-impact exercise like swimming keeps joints flexible without added stress — balanced with adequate rest.</p>
-
-<h3>Home Exercises</h3>
-<ul class="plain">
-<li>Neck tilts and rotations for neck pain</li>
-<li>Finger and thumb bends for hand pain</li>
-<li>Leg raises and hamstring stretches for knee pain</li>
-</ul>
-</div>
-
 </body>
 </html>
