@@ -1,102 +1,129 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Diabetes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes — Condition Guide</title>
   <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    :root{--accent:#2563eb;--accent-dark:#1e40af;--accent-soft:#eff6ff;--accent-border:#bfdbfe;--ink:#1f2933;--muted:#5b6b7b;--bg:#f4f6fb;--card:#fff;--danger:#dc2626;--danger-soft:#fef2f2;--radius:16px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+    .wrap{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+    .hero{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:54px 20px 66px;text-align:center;}
+    .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:999px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{margin:0;font-size:2.7rem;letter-spacing:-.5px;}
+    .hero p{margin:14px auto 0;max-width:640px;font-size:1.06rem;opacity:.96;}
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-38px 0 30px;}
+    .fact{background:var(--card);border-radius:14px;padding:15px 18px;box-shadow:0 8px 24px rgba(30,40,60,.09);border-top:3px solid var(--accent);}
+    .fact .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+    .fact .v{font-size:1rem;font-weight:600;margin-top:4px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:26px 28px;margin:18px 0;box-shadow:0 6px 18px rgba(30,40,60,.06);border:1px solid #e9edf2;}
+    .card h2{margin:0 0 8px;font-size:1.4rem;color:var(--accent-dark);display:flex;align-items:center;gap:10px;}
+    .card h3{margin:20px 0 6px;font-size:1.06rem;color:var(--ink);}
+    .lead{color:var(--muted);margin-top:4px;}
+    ul.clean{list-style:none;padding:0;margin:14px 0;}
+    ul.clean li{position:relative;padding:7px 0 7px 28px;border-bottom:1px dashed #eef1f6;}
+    ul.clean li:last-child{border-bottom:0;}
+    ul.clean li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+    ul.clean li strong{color:var(--accent-dark);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+    .pill{background:var(--accent-soft);color:var(--accent-dark);border:1px solid var(--accent-border);padding:6px 12px;border-radius:999px;font-size:.9rem;font-weight:500;}
+    .typegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:14px 0;}
+    .typegrid .t{border:1px solid var(--accent-border);border-radius:12px;padding:14px 16px;background:var(--accent-soft);}
+    .typegrid .t h3{margin:0 0 4px;color:var(--accent-dark);font-size:1rem;}
+    .typegrid .t p{margin:0;font-size:.92rem;}
+    table.data{border-collapse:collapse;width:100%;margin:14px 0;font-size:.95rem;}
+    table.data th,table.data td{border:1px solid #e3e8ef;padding:9px 12px;text-align:left;}
+    table.data th{background:var(--accent-soft);color:var(--accent-dark);}
+    .callout{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.97rem;}
+    .callout.info{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent-dark);}
+    .callout strong{display:block;margin-bottom:4px;}
+    footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:34px;padding-top:18px;border-top:1px solid #e2e8f0;}
+    @media(max-width:560px){.hero h1{font-size:2rem;}}
   </style>
-  <link rel="stylesheet" href="pandoc.css" />
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Diabetes</h1>
+<header class="hero">
+  <span class="badge">Chronic Metabolic Condition</span>
+  <h1>Diabetes</h1>
+  <p>A long-term condition in which blood sugar (glucose) stays too high, because the body either can't make enough insulin or can't use it properly. Careful management keeps it under control.</p>
 </header>
-<p><strong>Type 1 Diabetes</strong> Doctors usually work with four main kinds of insulin. What sets them apart is how fast they start working and how long they keep working. Rapid-acting insulin begins to act after about 15 minutes and keeps working for 3 to 4 hours. Short-acting insulin takes about 30 minutes to start and lasts between 6 and 8 hours. Intermediate-acting insulin needs 1 to 2 hours before it starts, and its effects last 12 to 18 hours. Long-acting insulin takes a few hours to kick in but can keep working for 24 hours or more. <strong>Type 1 Diabetes Diet</strong> The food you eat has a direct effect on your blood sugar. Foods high in starch or sugar push blood sugar up quickly, while protein and fat cause a slower rise. Because of this, your medical team may suggest a daily limit on carbohydrates. You will also need to match how much you eat with how much insulin you take. A dietitian can be a big help here, guiding you toward a meal plan built around the right mix of protein, fat, and carbs to keep your blood sugar steady. It's worth looking into a proper guide on starting a type 1 diabetes diet. <strong>Type 2 Diabetes Diet</strong> Choosing the right foods does two things at once: it helps manage blood sugar and supports weight loss if you need it. Counting carbs is a key skill for anyone with type 2 diabetes, and a dietitian can help you work out how many carb grams to have at each meal. Eating smaller meals more often throughout the day also helps keep blood sugar levels from swinging too much. Try to build your meals around foods like: 1. fruit 2. vegetables 3. whole grains 4. healthy fats, such as olive oil and nuts 5. There are also foods that make blood sugar control harder, so it helps to learn which ones to cut back on if you have diabetes.</p>
-<p>Type 1 diabetes cannot be prevented, since it comes from a fault in the immune system. Some risk factors for type 2 diabetes, like genetics or age, are also outside your control.</p>
-<p>That said, many other risk factors for diabetes can be managed. Most prevention strategies come down to fairly simple changes to eating habits and physical activity.</p>
-<p>If your doctor has told you that you have prediabetes, a few steps may help you delay or avoid developing type 2 diabetes:</p>
-<pre><code>Aim for a minimum of 150 minutes of aerobic activity each week, such as walking or cycling.
-Reduce saturated fat, trans fat, and refined carbs in your diet.
-Add more fruit, vegetables, and whole grains to your meals.
-Keep your portion sizes smaller.
-If you are overweight or obese, aim to lose around 7 percent of your body weight. </code></pre>
-<p>These are just some of the ways to lower your risk of diabetes. There are more strategies worth exploring that could help you avoid this long-term condition.</p>
-<h2 id="diagnosis">Diagnosis</h2>
-<p>Type 1 diabetes tends to appear suddenly, which is usually what prompts a blood sugar test in the first place. Other forms of diabetes, along with prediabetes, tend to develop more slowly and may not show obvious symptoms, so the American Diabetes Association (ADA) has set guidelines for who should be tested. According to the ADA, screening is recommended for:</p>
-<pre><code>1. Anyone with a body mass index above 25 (23 for Asian-Americans), no matter their age, if they also have risk factors like high blood pressure, unusual cholesterol levels, an inactive lifestyle, a history of polycystic ovary syndrome or heart disease, or a close relative with diabetes.
-2. Anyone over 45 should get an initial blood sugar test, and if the result is normal, repeat it every three years.
-3. Women who have had gestational diabetes should be tested for diabetes every three years.
-4. Anyone already diagnosed with prediabetes should be tested once a year.</code></pre>
-<p><strong>Tests for type 1 and type 2 diabetes and prediabetes</strong></p>
-<pre><code>Glycated hemoglobin (A1C) test. This blood test does not require fasting and shows your average blood sugar level over roughly the past two to three months. It works by measuring the percentage of hemoglobin, the protein in red blood cells that carries oxygen, that has sugar attached to it.
+<div class="wrap">
 
-The higher your blood sugar has been, the more sugar-coated hemoglobin you will have. If two separate A1C tests both come back at 6.5 percent or higher, that points to diabetes. A result between 5.7 and 6.4 percent suggests prediabetes, while anything under 5.7 percent is considered normal.</code></pre>
-<p>Sometimes the A1C test cannot be used, or its results are unclear or unreliable — for example, if you are pregnant or have an uncommon type of hemoglobin. In these cases, your doctor may rely on other tests to check for diabetes:</p>
-<pre><code>1. **Random blood sugar test**. This involves taking a blood sample at any time of day, regardless of your last meal. A reading of 200 milligrams per deciliter (mg/dL) — or 11.1 millimoles per liter (mmol/L) — or higher points toward diabetes.
-2. **Fasting blood sugar test**. This test is done after fasting overnight. A result under 100 mg/dL (5.6 mmol/L) is normal. Between 100 and 125 mg/dL (5.6 to 6.9 mmol/L) suggests prediabetes. A result of 126 mg/dL (7 mmol/L) or above, confirmed twice, means diabetes.
+  <section class="facts">
+    <div class="fact"><div class="k">Category</div><div class="v">Metabolic / endocrine</div></div>
+    <div class="fact"><div class="k">Core problem</div><div class="v">High blood glucose</div></div>
+    <div class="fact"><div class="k">Main types</div><div class="v">Type 1, Type 2, gestational</div></div>
+    <div class="fact"><div class="k">Curable?</div><div class="v">No — but manageable</div></div>
+  </section>
 
-3. **Oral glucose tolerance test**. You fast overnight and have your blood sugar measured first. Then you drink a sugary solution, and your blood sugar is checked again several times over the following two hours.
+  <section class="card">
+    <h2>🩸 Overview &amp; Types</h2>
+    <p><strong>Diabetes</strong> is a condition in which the level of glucose (sugar) in the blood is too high. Insulin — a hormone made by the pancreas — normally moves glucose from the blood into the body's cells for energy. In diabetes, that system breaks down.</p>
+    <div class="typegrid">
+      <div class="t"><h3>Type 1</h3><p>The immune system attacks the insulin-making cells, so the body makes little or no insulin. It needs lifelong insulin and can't be prevented.</p></div>
+      <div class="t"><h3>Type 2</h3><p>The body becomes resistant to insulin or doesn't make enough. It is strongly linked to lifestyle and is often preventable or manageable.</p></div>
+      <div class="t"><h3>Gestational</h3><p>Develops during pregnancy and usually resolves after birth, but raises the future risk of type 2 diabetes.</p></div>
+      <div class="t"><h3>Prediabetes</h3><p>Blood sugar is higher than normal but not yet in the diabetes range — a warning stage that can often be reversed.</p></div>
+    </div>
+  </section>
 
-4. **Interpreting the results**. A level under 140 mg/dL (7.8 mmol/L) after two hours is normal. Anything above 200 mg/dL (11.1 mmol/L) points to diabetes, while a result between 140 and 199 mg/dL (7.8 to 11.0 mmol/L) suggests prediabetes.</code></pre>
-<p>When type 1 diabetes is a possibility, a urine test may be done to check for ketones — substances produced when the body burns fat and muscle for energy because it lacks enough insulin to use glucose properly. Your doctor may also test for autoantibodies, immune cells that attack the body and are linked to type 1 diabetes.</p>
-<h2 id="treatment">Treatment</h2>
-<p>The right treatment depends on which type of diabetes you have, but it often includes checking your blood sugar regularly, taking insulin, and possibly oral medication. Alongside this, eating well, keeping a healthy weight, and staying active all play a major role in managing the condition. <strong>Treatment approaches for every type of diabetes</strong></p>
-<p>Keeping a healthy weight through good nutrition and exercise matters for managing diabetes and for your overall health in general:</p>
-<pre><code>1. **Eating well**. Despite what many people think, there isn't one single "diabetes diet." The goal is to build meals mostly around fruit, vegetables, lean protein, and whole grains — foods rich in nutrients and fiber but lower in fat and calories — while cutting back on saturated fat, refined carbs, and sweets. This kind of eating plan actually works well for the whole family, not just someone with diabetes. Occasional sweets are fine, as long as you factor them into your overall meal plan.
+  <section class="card">
+    <h2>🩺 Symptoms</h2>
+    <div class="pills">
+      <span class="pill">Increased thirst</span><span class="pill">Frequent urination</span><span class="pill">Extreme hunger</span>
+      <span class="pill">Unexplained weight loss</span><span class="pill">Fatigue</span><span class="pill">Blurred vision</span>
+      <span class="pill">Slow-healing sores</span>
+    </div>
+    <p>Type 1 tends to appear suddenly, which usually prompts a blood-sugar test. Type 2 and prediabetes develop slowly and may cause no obvious symptoms for years.</p>
+  </section>
 
-Figuring out exactly what and how much to eat, though, can be tricky. A registered dietitian can build a meal plan around your health goals, food likes and dislikes, and daily routine. This usually includes learning to count carbohydrates, which matters even more if you have type 1 diabetes.
+  <section class="card">
+    <h2>🔍 Diagnosis</h2>
+    <p>Because type 2 can be silent, the American Diabetes Association recommends screening for people with a raised BMI plus other risk factors, everyone over 45, women who've had gestational diabetes, and anyone with prediabetes.</p>
+    <table class="data">
+      <tr><th>Test</th><th>What it shows</th></tr>
+      <tr><td>A1C (glycated haemoglobin)</td><td>Average blood sugar over 2–3 months. 6.5%+ = diabetes; 5.7–6.4% = prediabetes; under 5.7% = normal.</td></tr>
+      <tr><td>Fasting blood sugar</td><td>Under 100 mg/dL normal; 100–125 prediabetes; 126+ (confirmed) = diabetes.</td></tr>
+      <tr><td>Random blood sugar</td><td>200 mg/dL or higher points to diabetes.</td></tr>
+      <tr><td>Oral glucose tolerance</td><td>Blood sugar checked after a sugary drink; 200+ mg/dL at 2 hours = diabetes.</td></tr>
+    </table>
+    <p>If type 1 is suspected, a urine test may check for <strong>ketones</strong>, and blood may be tested for <strong>autoantibodies</strong> linked to type 1.</p>
+  </section>
 
-2. **Staying active**. Regular aerobic exercise benefits everyone, including people with diabetes. Physical activity lowers blood sugar by helping move sugar out of the blood and into your cells, where it gets used for energy. It also makes your body respond better to insulin, so you need less of it to move sugar where it needs to go.
+  <section class="card">
+    <h2>💊 Treatment</h2>
+    <p>Treatment depends on the type, but usually combines blood-sugar monitoring, healthy eating, and physical activity — with medication or insulin as needed.</p>
+    <h3>Lifestyle (all types)</h3>
+    <ul class="clean">
+      <li><strong>Eat well</strong> — build meals around fruit, vegetables, lean protein, and whole grains; cut back on saturated fat, refined carbs, and sweets. A dietitian can help with carb counting.</li>
+      <li><strong>Stay active</strong> — aim for at least 30 minutes of aerobic exercise most days; activity lowers blood sugar and improves how the body responds to insulin.</li>
+    </ul>
+    <h3>Type 1 &amp; insulin</h3>
+    <p>Type 1 always needs insulin (by injection, pen, or pump), along with frequent blood-sugar checks and carb counting. Insulin comes in rapid-, short-, intermediate-, and long-acting forms, often combined to match the day's needs. It can't be taken as a pill because stomach enzymes would destroy it.</p>
+    <h3>Type 2 &amp; other medicines</h3>
+    <p>Type 2 is managed mainly through lifestyle and monitoring, plus medication. <strong>Metformin</strong> is usually the first drug prescribed. Other medicines help the pancreas release more insulin, reduce sugar produced by the liver, or make cells more responsive to insulin. Some people with type 2 also need insulin.</p>
+    <div class="callout info">
+      <strong>ℹ️ Tracking control</strong>
+      Daily finger-prick tests (or a continuous glucose monitor) show moment-to-moment changes, while regular A1C tests show the bigger picture. Most people aim for an A1C below 7% — ask your doctor about the right target for you.
+    </div>
+  </section>
 
-Check with your doctor before starting an exercise routine, then pick activities you actually enjoy — walking, swimming, or cycling are common choices. The key is making movement a regular part of your day, not a one-off effort.
+  <section class="card">
+    <h2>🛡️ Prevention</h2>
+    <p>Type 1 can't be prevented. Many type 2 risk factors, though, can be managed. If you have prediabetes:</p>
+    <ul class="clean">
+      <li>Aim for at least 150 minutes of aerobic activity each week.</li>
+      <li>Reduce saturated fat, trans fat, and refined carbs.</li>
+      <li>Add more fruit, vegetables, and whole grains.</li>
+      <li>Keep portion sizes smaller.</li>
+      <li>If overweight, aim to lose around 7% of your body weight.</li>
+    </ul>
+  </section>
 
-Try to get at least 30 minutes of aerobic exercise on most days of the week. You don't need to do it all at once — three 10-minute sessions can work just as well. If you've been inactive for a while, ease into it and build up slowly.</code></pre>
-<p><strong>Treatment for type 1 and type 2 diabetes</strong></p>
-<p>Type 1 diabetes is managed with insulin, either through injections or a pump, along with frequent blood sugar checks and carb counting. Type 2 diabetes is mainly managed through lifestyle changes and blood sugar monitoring, combined with medication, insulin, or both.</p>
-<pre><code>1. **Checking your blood sugar**. Depending on your treatment plan, you might test your blood sugar up to four times a day, or more often if you use insulin. Regular checks are the only reliable way to know if your blood sugar is staying within a healthy range. People with type 2 diabetes who don't use insulin usually test far less often.
-
-Some people on insulin therapy use a continuous glucose monitor instead of, or alongside, regular finger-prick tests. This technology hasn't fully replaced the traditional glucose meter, but it can cut down on the number of finger pricks needed and reveal useful patterns in blood sugar over time.
-
-Even with careful tracking, blood sugar can still shift unexpectedly. Your diabetes care team can help you understand how food, exercise, medication, illness, alcohol, stress, and (for women) hormone changes all affect your levels.
-
-On top of daily checks, your doctor will likely recommend regular A1C testing to track your average blood sugar over the past two to three months.
-
-While daily testing shows moment-to-moment changes, A1C testing gives a bigger-picture view of how well your overall treatment plan is working. A high A1C result might mean it's time to adjust your medication, insulin, or diet.
-
-Your ideal A1C target can vary based on your age and any other health conditions you have. Still, the American Diabetes Association generally recommends aiming for an A1C below 7 percent for most people with diabetes. It's worth asking your doctor what target makes sense for you specifically.
-
-2. **Insulin**. Insulin therapy is essential for survival if you have type 1 diabetes, and many people with type 2 or gestational diabetes need it too.
-
-There's a range of insulin types available — rapid-acting, long-acting, and various options in between. Your doctor might combine different types depending on your needs throughout the day and night.
-
-Insulin can't be taken as a pill because stomach enzymes would break it down before it could work. Instead, it's usually given through a fine needle and syringe, or with an insulin pen, a device shaped like a large pen.
-
-An insulin pump is another option — a small device, roughly the size of a cellphone, worn outside the body. It connects through a tube to a catheter placed under the skin, usually on the abdomen.
-
-There's also a newer, tubeless pump that works wirelessly. Pumps can be programmed to release set amounts of insulin, and the dose can be adjusted based on meals, activity, and blood sugar readings.
-
-One promising development still being refined is closed-loop insulin delivery, sometimes called an artificial pancreas. It connects a glucose monitor to an insulin pump so the system can automatically deliver the right dose when it's needed.
-
-Several versions of this system exist, and early trial results look promising. More research is still needed before a fully automated version gets full regulatory approval.
-
-That said, real progress has already happened. In 2016, the FDA approved a device combining an insulin pump, glucose monitor, and computer algorithm. Users of this device still need to manually enter how many carbs they're about to eat.
-
-3. **Other medications**. Beyond insulin, other oral or injectable drugs are sometimes prescribed. Some encourage the pancreas to make and release more insulin. Others reduce how much sugar the liver produces and releases, which lowers the amount of insulin your body needs.
-
-Other medications work by blocking digestive enzymes that break down carbs, or by making your cells more responsive to insulin. Metformin (sold as Glucophage, Glumetza, and other brands) is typically the first drug doctors prescribe for type 2 diabetes.
-
-4. **Transplants**. For some people with type 1 diabetes, a pancreas transplant may be worth considering, and islet cell transplants are also being researched. A successful pancreas transplant can eliminate the need for insulin therapy altogether.
-
-However, transplants don't always succeed, and they carry serious risks. Recipients need to take immune-suppressing medication for life to stop their body from rejecting the new organ, and these drugs come with their own significant side effects. Because of this, transplants are usually reserved for people whose diabetes is very hard to control, or who need a kidney transplant as well.
-
-5. **Weight-loss surgery**. While it isn't officially classified as a diabetes treatment, bariatric surgery may benefit people with type 2 diabetes who are obese and have a body mass index above 35. Many people who've had gastric bypass surgery see major improvements in their blood sugar levels afterward. That said, the long-term risks and benefits of this approach for type 2 diabetes are still not fully understood.</code></pre>
+  <footer>
+    This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.
+  </footer>
+</div>
 </body>
 </html>

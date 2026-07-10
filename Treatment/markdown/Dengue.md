@@ -1,36 +1,59 @@
-# Dengue
+# 🦟 Dengue Fever
 
-**Dengue** (say: DENG-gey) is an illness spread by mosquito bites. It is common in hot and humid parts of the world. A mild case of dengue usually brings a high temperature, skin rash, and pain in the muscles and joints. But there is also a more dangerous kind called dengue hemorrhagic fever. This form can lead to heavy bleeding, a fast drop in blood pressure (also known as shock), and in the worst cases, death.
+> **In short:** Dengue is a viral infection spread by the bite of infected mosquitoes, common in hot and humid regions. Most cases are mild, but a severe form can be life-threatening.
 
-Every year, dengue infects millions of people around the world. It is especially widespread in Southeast Asia and the islands of the western Pacific. However, cases have also been growing fast across Latin America and the Caribbean in recent years.
+| | |
+|---|---|
+| **Spread by** | Aedes mosquitoes |
+| **Common in** | Tropics and subtropics |
+| **Key sign** | High fever and body ache |
+| **Specific cure?** | None — supportive care |
 
-Scientists are still developing vaccines against dengue. Until one becomes widely available, the best way to stay safe is to get rid of places where mosquitoes can breed, especially in regions where dengue is common.
+---
+
+## Overview
+
+**Dengue** (say: *DENG-gey*) is an illness spread by mosquito bites, common in hot and humid parts of the world. A mild case usually brings a high temperature, skin rash, and pain in the muscles and joints. There is also a more dangerous form called **dengue haemorrhagic fever**, which can lead to heavy bleeding, a sudden drop in blood pressure (shock), and, in the worst cases, death.
+
+Each year, dengue infects millions of people worldwide. It is especially widespread in Southeast Asia and the western Pacific islands, and cases have been rising quickly across Latin America and the Caribbean. Vaccines are still being developed, so the best protection is to eliminate the places where mosquitoes breed.
+
+## Symptoms
+
+- High fever
+- Severe headache and pain behind the eyes
+- Muscle and joint pain
+- Skin rash
+- Nausea and vomiting
+
+> ⚠️ **Warning signs of severe dengue — seek care immediately:** severe abdominal pain, persistent vomiting, bleeding from the gums or nose, blood in vomit or stool, rapid breathing, and cold, clammy skin.
 
 ## Diagnosis
 
-It is not always easy for doctors to identify dengue fever. Its symptoms look a lot like those of other illnesses, such as malaria, leptospirosis, and typhoid fever, which can lead to confusion.
-
-Your doctor will probably ask questions about your health background and any recent travel. Try to give as much detail as possible about trips abroad — where you went, when you were there, and whether you remember being bitten by mosquitoes.
-
-There are lab tests that can show signs of the dengue virus in your body. Unfortunately, the results often take a while to come back, so they are not always useful for making quick treatment decisions.
+Dengue can be hard to identify because its symptoms resemble other illnesses such as malaria, leptospirosis, and typhoid fever. Your doctor will likely ask about your health background and any recent travel — try to describe where you went, when, and whether you were bitten by mosquitoes. Lab tests can detect signs of the dengue virus, though results often take time to return and aren't always available for quick decisions.
 
 ## Treatment
 
-At the moment, there is no medicine made specifically to cure dengue fever. Doctors usually advise patients to drink a lot of water, since vomiting and fever can quickly lead to dehydration.
+There is currently no medicine made specifically to cure dengue. Care focuses on relieving symptoms and preventing dehydration, since fever and vomiting can quickly drain the body of fluids. Doctors usually advise drinking plenty of water.
 
-As you recover from dengue, keep an eye out for warning signs of dehydration. Contact your doctor immediately if you notice any of the following:
+Take **acetaminophen (paracetamol)** to ease pain and lower fever. Avoid medicines that raise the risk of bleeding — including **aspirin, ibuprofen, and naproxen**.
 
-    1. Peeing less than usual
-    2. Little or no tears when crying
-    3. A dry mouth or dry lips
-    4. Feeling unusually tired or confused
-    5. Hands or feet that feel cold or clammy
+**Watch for dehydration.** Contact a doctor immediately if you notice:
 
-Taking acetaminophen (sold as Tylenol and other brands) can help ease pain and bring down a fever. Stay away from medicines that raise the risk of bleeding, including aspirin, ibuprofen (found in Advil, Motrin IB, and similar products), and naproxen sodium (such as Aleve).
+- Peeing less than usual
+- Few or no tears when crying
+- A dry mouth or dry lips
+- Feeling unusually tired or confused
+- Cold or clammy hands or feet
 
-People with a severe case of dengue may require the following:
+**Severe cases** may require hospital care and monitoring, IV fluids and electrolytes, regular blood-pressure checks, and — if a lot of blood is lost — a blood transfusion.
 
-    1. Care and monitoring in a hospital
-    2. IV fluids and electrolytes to restore balance in the body
-    3. Regular checks on blood pressure
-    4. A blood transfusion if a lot of blood has been lost
+## Prevention
+
+- Remove standing water where mosquitoes breed (buckets, tyres, flowerpots).
+- Use insect repellent on exposed skin.
+- Wear long sleeves and trousers, especially at dawn and dusk.
+- Sleep under a mosquito net and use screens on windows and doors.
+
+---
+
+*This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.*

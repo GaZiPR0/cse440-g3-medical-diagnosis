@@ -1,44 +1,109 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Dengue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dengue — Condition Guide</title>
   <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    :root{--accent:#ea580c;--accent-dark:#9a3412;--accent-soft:#fff7ed;--accent-border:#fed7aa;--ink:#1f2933;--muted:#5b6b7b;--bg:#faf6f2;--card:#fff;--danger:#dc2626;--danger-soft:#fef2f2;--radius:16px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+    .wrap{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+    .hero{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:54px 20px 66px;text-align:center;}
+    .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:999px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{margin:0;font-size:2.7rem;letter-spacing:-.5px;}
+    .hero p{margin:14px auto 0;max-width:640px;font-size:1.06rem;opacity:.96;}
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-38px 0 30px;}
+    .fact{background:var(--card);border-radius:14px;padding:15px 18px;box-shadow:0 8px 24px rgba(30,40,60,.09);border-top:3px solid var(--accent);}
+    .fact .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+    .fact .v{font-size:1rem;font-weight:600;margin-top:4px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:26px 28px;margin:18px 0;box-shadow:0 6px 18px rgba(30,40,60,.06);border:1px solid #e9edf2;}
+    .card h2{margin:0 0 8px;font-size:1.4rem;color:var(--accent-dark);display:flex;align-items:center;gap:10px;}
+    .card h3{margin:20px 0 6px;font-size:1.06rem;color:var(--ink);}
+    .lead{color:var(--muted);margin-top:4px;}
+    ul.clean{list-style:none;padding:0;margin:14px 0;}
+    ul.clean li{position:relative;padding:7px 0 7px 28px;border-bottom:1px dashed #eef1f6;}
+    ul.clean li:last-child{border-bottom:0;}
+    ul.clean li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+    ul.clean li strong{color:var(--accent-dark);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+    .pill{background:var(--accent-soft);color:var(--accent-dark);border:1px solid var(--accent-border);padding:6px 12px;border-radius:999px;font-size:.9rem;font-weight:500;}
+    .callout{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.97rem;}
+    .callout.warn{background:var(--danger-soft);border:1px solid #fecaca;color:#7f1d1d;}
+    .callout.info{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent-dark);}
+    .callout strong{display:block;margin-bottom:4px;}
+    footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:34px;padding-top:18px;border-top:1px solid #e2e8f0;}
+    @media(max-width:560px){.hero h1{font-size:2rem;}}
   </style>
-  <link rel="stylesheet" href="pandoc.css" />
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Dengue</h1>
+<header class="hero">
+  <span class="badge">Mosquito-Borne Viral Illness</span>
+  <h1>Dengue Fever</h1>
+  <p>A viral infection spread by the bite of infected mosquitoes, common in hot and humid regions. Most cases are mild, but a severe form can be life-threatening.</p>
 </header>
-<p><strong>Dengue</strong> (say: DENG-gey) is an illness spread by mosquito bites. It is common in hot and humid parts of the world. A mild case of dengue usually brings a high temperature, skin rash, and pain in the muscles and joints. But there is also a more dangerous kind called dengue hemorrhagic fever. This form can lead to heavy bleeding, a fast drop in blood pressure (also known as shock), and in the worst cases, death.</p>
-<p>Every year, dengue infects millions of people around the world. It is especially widespread in Southeast Asia and the islands of the western Pacific. However, cases have also been growing fast across Latin America and the Caribbean in recent years.</p>
-<p>Scientists are still developing vaccines against dengue. Until one becomes widely available, the best way to stay safe is to get rid of places where mosquitoes can breed, especially in regions where dengue is common.</p>
-<h2 id="diagnosis">Diagnosis</h2>
-<p>It is not always easy for doctors to identify dengue fever. Its symptoms look a lot like those of other illnesses, such as malaria, leptospirosis, and typhoid fever, which can lead to confusion.</p>
-<p>Your doctor will probably ask questions about your health background and any recent travel. Try to give as much detail as possible about trips abroad — where you went, when you were there, and whether you remember being bitten by mosquitoes.</p>
-<p>There are lab tests that can show signs of the dengue virus in your body. Unfortunately, the results often take a while to come back, so they are not always useful for making quick treatment decisions.</p>
-<h2 id="treatment">Treatment</h2>
-<p>At the moment, there is no medicine made specifically to cure dengue fever. Doctors usually advise patients to drink a lot of water, since vomiting and fever can quickly lead to dehydration.</p>
-<p>As you recover from dengue, keep an eye out for warning signs of dehydration. Contact your doctor immediately if you notice any of the following:</p>
-<pre><code>1. Peeing less than usual
-2. Little or no tears when crying
-3. A dry mouth or dry lips
-4. Feeling unusually tired or confused
-5. Hands or feet that feel cold or clammy</code></pre>
-<p>Taking acetaminophen (sold as Tylenol and other brands) can help ease pain and bring down a fever. Stay away from medicines that raise the risk of bleeding, including aspirin, ibuprofen (found in Advil, Motrin IB, and similar products), and naproxen sodium (such as Aleve).</p>
-<p>People with a severe case of dengue may require the following:</p>
-<pre><code>1. Care and monitoring in a hospital
-2. IV fluids and electrolytes to restore balance in the body
-3. Regular checks on blood pressure
-4. A blood transfusion if a lot of blood has been lost</code></pre>
+<div class="wrap">
+
+  <section class="facts">
+    <div class="fact"><div class="k">Spread by</div><div class="v">Aedes mosquitoes</div></div>
+    <div class="fact"><div class="k">Common in</div><div class="v">Tropics &amp; subtropics</div></div>
+    <div class="fact"><div class="k">Key sign</div><div class="v">High fever &amp; body ache</div></div>
+    <div class="fact"><div class="k">Specific cure?</div><div class="v">None — supportive care</div></div>
+  </section>
+
+  <section class="card">
+    <h2>🦟 Overview</h2>
+    <p><strong>Dengue</strong> (say: <em>DENG-gey</em>) is an illness spread by mosquito bites, common in hot and humid parts of the world. A mild case usually brings a high temperature, skin rash, and pain in the muscles and joints. There is also a more dangerous form called <strong>dengue haemorrhagic fever</strong>, which can lead to heavy bleeding, a sudden drop in blood pressure (shock), and, in the worst cases, death.</p>
+    <p>Each year, dengue infects millions of people worldwide. It is especially widespread in Southeast Asia and the western Pacific islands, and cases have been rising quickly across Latin America and the Caribbean. Vaccines are still being developed, so the best protection is to eliminate the places where mosquitoes breed.</p>
+  </section>
+
+  <section class="card">
+    <h2>🩺 Symptoms</h2>
+    <div class="pills">
+      <span class="pill">High fever</span><span class="pill">Severe headache</span><span class="pill">Pain behind the eyes</span>
+      <span class="pill">Muscle &amp; joint pain</span><span class="pill">Skin rash</span><span class="pill">Nausea &amp; vomiting</span>
+    </div>
+    <div class="callout warn">
+      <strong>⚠️ Warning signs of severe dengue — seek care immediately</strong>
+      Severe abdominal pain, persistent vomiting, bleeding from the gums or nose, blood in vomit or stool, rapid breathing, and cold, clammy skin.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🔍 Diagnosis</h2>
+    <p>Dengue can be hard to identify because its symptoms resemble other illnesses such as malaria, leptospirosis, and typhoid fever. Your doctor will likely ask about your health background and any recent travel — try to describe where you went, when, and whether you were bitten by mosquitoes. Lab tests can detect signs of the dengue virus, though results often take time to return and aren't always available for quick decisions.</p>
+  </section>
+
+  <section class="card">
+    <h2>💊 Treatment</h2>
+    <p>There is currently no medicine made specifically to cure dengue. Care focuses on relieving symptoms and preventing dehydration, since fever and vomiting can quickly drain the body of fluids. Doctors usually advise drinking plenty of water.</p>
+    <p>Take <strong>acetaminophen (paracetamol)</strong> to ease pain and lower fever. Avoid medicines that raise the risk of bleeding — including <strong>aspirin, ibuprofen, and naproxen</strong>.</p>
+    <h3>Watch for dehydration</h3>
+    <p>Contact a doctor immediately if you notice:</p>
+    <ul class="clean">
+      <li>Peeing less than usual</li>
+      <li>Few or no tears when crying</li>
+      <li>A dry mouth or dry lips</li>
+      <li>Feeling unusually tired or confused</li>
+      <li>Cold or clammy hands or feet</li>
+    </ul>
+    <h3>Severe cases</h3>
+    <p>Severe dengue may require hospital care and monitoring, IV fluids and electrolytes, regular blood-pressure checks, and — if a lot of blood is lost — a blood transfusion.</p>
+  </section>
+
+  <section class="card">
+    <h2>🛡️ Prevention</h2>
+    <ul class="clean">
+      <li>Remove standing water where mosquitoes breed (buckets, tyres, flowerpots).</li>
+      <li>Use insect repellent on exposed skin.</li>
+      <li>Wear long sleeves and trousers, especially at dawn and dusk.</li>
+      <li>Sleep under a mosquito net and use screens on windows and doors.</li>
+    </ul>
+  </section>
+
+  <footer>
+    This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.
+  </footer>
+</div>
 </body>
 </html>
