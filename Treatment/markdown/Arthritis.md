@@ -1,57 +1,73 @@
-# Arthritis Guide
+# 🦴 Arthritis
 
-**Arthritis** refers to joint inflammation causing pain and stiffness that tends to worsen over time. The two leading forms are osteoarthritis and rheumatoid arthritis.
+> **In short:** Arthritis is inflammation of one or more joints, causing pain and stiffness that often worsens with age. It's not a single disease — there are more than 100 types, led by osteoarthritis and rheumatoid arthritis.
 
-Osteoarthritis wears down the cartilage cushioning joint bones. Rheumatoid arthritis, on the other hand, is autoimmune — the body's defenses mistakenly attack the joint lining.
+| | |
+|---|---|
+| **Category** | Joint / musculoskeletal |
+| **Main symptoms** | Joint pain and stiffness |
+| **Leading types** | Osteoarthritis, rheumatoid arthritis |
+| **Curable?** | No — but manageable |
 
-Gout stems from uric acid crystal buildup, while infections or conditions like psoriasis and lupus can trigger other arthritis types.
+---
+
+## Overview
+
+**Arthritis** refers to inflammation of the joints, which causes pain and stiffness that tends to worsen over time. It is an umbrella term covering many conditions. The two leading forms work in very different ways:
+
+- **Osteoarthritis (OA)** — the "wear-and-tear" type. The cartilage that cushions the ends of the bones gradually breaks down, so the bones rub together.
+- **Rheumatoid arthritis (RA)** — an autoimmune disease. The body's own defences mistakenly attack the lining of the joints, causing inflammation.
+
+Other forms include **gout**, caused by a buildup of uric acid crystals, and arthritis triggered by infections or by conditions such as psoriasis and lupus.
+
+## Symptoms
+
+- Joint pain
+- Stiffness (often worst in the morning or after rest)
+- Swelling
+- Redness and warmth over the joint
+- Reduced range of motion
+
+Symptoms may come and go, and can be mild, moderate, or severe.
 
 ## Getting Diagnosed
 
-A physical exam checks for joint swelling, redness, warmth, and range of motion. Further testing depends on the suspected type.
+A physical exam checks the joints for swelling, redness, warmth, and range of motion. Further testing depends on the suspected type.
 
-### Lab Analysis
+**Lab analysis** — Blood, urine, and joint-fluid samples help narrow down the diagnosis. Joint fluid is drawn with a needle after the area is numbed.
 
-Blood, urine, and joint fluid samples help narrow down the diagnosis. Joint fluid is drawn via needle after numbing the area.
+**Imaging**
 
-### Imaging Options
-
-- **X-ray** — shows cartilage loss and bone damage; useful for tracking progression over time.
-- **CT scan** — combines multi-angle X-rays into cross-sectional views of bone and soft tissue.
+- **X-ray** — shows cartilage loss and bone damage; useful for tracking progression.
+- **CT scan** — combines X-rays from many angles into cross-sectional views of bone and soft tissue.
 - **MRI** — uses magnetic fields for detailed images of cartilage, tendons, and ligaments.
-- **Ultrasound** — images soft tissue and joint fluid; also guides needle-based procedures.
+- **Ultrasound** — images soft tissue and joint fluid, and can guide needle procedures.
 
-## Treatment Strategies
+## Treatment
 
-The core goals: reduce pain and prevent further joint damage. Heat/ice therapy and mobility aids like canes or walkers can help manage discomfort day to day.
+The core goals are to reduce pain and prevent further joint damage. Heat and ice therapy, and mobility aids such as canes or walkers, help manage discomfort day to day.
 
-### Medication Options
+**Medications**
 
-- **Analgesics** (e.g., acetaminophen, hydrocodone) — pain relief without anti-inflammatory effects.
-- **NSAIDs** (e.g., ibuprofen, salicylates) — reduce both pain and inflammation; caution needed with blood thinners.
+- **Analgesics** (e.g. acetaminophen) — relieve pain without reducing inflammation.
+- **NSAIDs** (e.g. ibuprofen) — ease both pain and inflammation; caution with blood thinners.
 - **Topical creams** (menthol/capsaicin) — interrupt pain signals locally.
-- **Immunosuppressants** (prednisone, cortisone) — dampen inflammation.
+- **Immunosuppressants & corticosteroids** (prednisone, cortisone) — dampen inflammation.
 
-Rheumatoid arthritis patients may also be prescribed corticosteroids or DMARDs to control immune activity.
+People with rheumatoid arthritis may also be prescribed **DMARDs** to control the overactive immune response.
 
-### Surgical Options
+**Surgery** — In advanced cases, joint replacement (commonly hip or knee) or joint fusion (for fingers or wrists) may be recommended.
 
-Joint replacement (commonly hip or knee) or joint fusion (for fingers/wrists) may be recommended in advanced cases.
+**Physical therapy** — Targeted exercises to strengthen the muscles around affected joints are a cornerstone of long-term management.
 
-### Physical Therapy
+## Lifestyle & Self-Care
 
-Targeted strengthening exercises around affected joints form a cornerstone of long-term management.
+Maintaining a healthy weight lowers the risk of osteoarthritis and eases existing symptoms. An antioxidant-rich diet — fruits, vegetables, herbs, fish, and nuts — helps fight inflammation, while fried, processed, and high-meat foods are best kept to a minimum.
 
-## Lifestyle Factors
+Low-impact exercise such as swimming keeps joints flexible without added stress, balanced with adequate rest.
 
-Maintaining a healthy weight reduces OA risk and eases existing symptoms. An antioxidant-rich diet — fruits, vegetables, herbs, fish, nuts — helps fight inflammation, while fried, processed, dairy, and high-meat diets should be minimized.
+> ℹ️ **Simple home exercises:** neck tilts and rotations for neck pain · finger and thumb bends for hand pain · leg raises and hamstring stretches for knee pain.
 
-Some evidence links gluten antibodies to rheumatoid arthritis, and a 2015 study recommended gluten-free eating for undifferentiated connective tissue disease as well.
+---
 
-Low-impact exercise like swimming keeps joints flexible without added stress — balanced with adequate rest.
-
-### Home Exercises
-
-- Neck tilts and rotations for neck pain
-- Finger and thumb bends for hand pain
-- Leg raises and hamstring stretches for knee pain
+*This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.*

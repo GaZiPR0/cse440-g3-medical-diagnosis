@@ -1,75 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Understanding AIDS</title>
-<style>
-  body { font-family: Georgia, 'Times New Roman', serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #222; }
-  h1 { border-bottom: 3px solid #444; padding-bottom: 10px; }
-  h2 { color: #333; margin-top: 30px; }
-  h3 { color: #555; }
-  .note { background: #f4f4f4; padding: 12px 16px; border-left: 4px solid #888; margin: 16px 0; }
-  ol { padding-left: 24px; }
-  strong.term { color: #111; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIDS / HIV — Condition Guide</title>
+  <style>
+    :root{--accent:#dc2626;--accent-dark:#991b1b;--accent-soft:#fef2f2;--accent-border:#fecaca;--ink:#1f2933;--muted:#5b6b7b;--bg:#fbf5f5;--card:#fff;--danger:#dc2626;--danger-soft:#fef2f2;--radius:16px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+    .wrap{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+    .hero{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:54px 20px 66px;text-align:center;}
+    .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:999px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{margin:0;font-size:2.7rem;letter-spacing:-.5px;}
+    .hero p{margin:14px auto 0;max-width:640px;font-size:1.06rem;opacity:.96;}
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-38px 0 30px;}
+    .fact{background:var(--card);border-radius:14px;padding:15px 18px;box-shadow:0 8px 24px rgba(30,40,60,.09);border-top:3px solid var(--accent);}
+    .fact .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+    .fact .v{font-size:1rem;font-weight:600;margin-top:4px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:26px 28px;margin:18px 0;box-shadow:0 6px 18px rgba(30,40,60,.06);border:1px solid #e9edf2;}
+    .card h2{margin:0 0 8px;font-size:1.4rem;color:var(--accent-dark);display:flex;align-items:center;gap:10px;}
+    .card h3{margin:20px 0 6px;font-size:1.06rem;color:var(--ink);}
+    .lead{color:var(--muted);margin-top:4px;}
+    ul.clean{list-style:none;padding:0;margin:14px 0;}
+    ul.clean li{position:relative;padding:7px 0 7px 28px;border-bottom:1px dashed #eef1f6;}
+    ul.clean li:last-child{border-bottom:0;}
+    ul.clean li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+    ul.clean li strong{color:var(--accent-dark);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+    .pill{background:var(--accent-soft);color:var(--accent-dark);border:1px solid var(--accent-border);padding:6px 12px;border-radius:999px;font-size:.9rem;font-weight:500;}
+    .typegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:14px 0;}
+    .typegrid .t{border:1px solid var(--accent-border);border-radius:12px;padding:14px 16px;background:var(--accent-soft);}
+    .typegrid .t h3{margin:0 0 4px;color:var(--accent-dark);font-size:1rem;}
+    .typegrid .t p{margin:0;font-size:.92rem;}
+    .callout{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.97rem;}
+    .callout.warn{background:var(--danger-soft);border:1px solid #fecaca;color:#7f1d1d;}
+    .callout.info{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent-dark);}
+    .callout strong{display:block;margin-bottom:4px;}
+    footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:34px;padding-top:18px;border-top:1px solid #e2e8f0;}
+    @media(max-width:560px){.hero h1{font-size:2rem;}}
+  </style>
 </head>
 <body>
+<header class="hero">
+  <span class="badge">Immune System · HIV/AIDS</span>
+  <h1>HIV &amp; AIDS</h1>
+  <p>AIDS is the most advanced stage of infection with HIV — a virus that weakens the immune system. With today's treatment, HIV can be controlled and progression to AIDS prevented.</p>
+</header>
+<div class="wrap">
 
-<h1>Understanding AIDS</h1>
+  <section class="facts">
+    <div class="fact"><div class="k">Full name</div><div class="v">Acquired Immune Deficiency Syndrome</div></div>
+    <div class="fact"><div class="k">Caused by</div><div class="v">HIV virus</div></div>
+    <div class="fact"><div class="k">Curable?</div><div class="v">No — but treatable</div></div>
+    <div class="fact"><div class="k">Managed with</div><div class="v">Antiretroviral therapy</div></div>
+  </section>
 
-<section id="overview">
-<p><strong class="term">AIDS</strong> (Acquired Immune Deficiency Syndrome) marks the final stage of HIV infection.</p>
+  <section class="card">
+    <h2>🎗️ Overview</h2>
+    <p><strong>AIDS</strong> (Acquired Immune Deficiency Syndrome) is the final and most serious stage of infection with <strong>HIV</strong> (the human immunodeficiency virus). HIV targets and destroys CD4 cells — the white blood cells that coordinate the body's defence against infection.</p>
+    <p>As the number of CD4 cells falls, the immune system gradually loses its ability to fight off illness. This opens the door to serious "opportunistic infections" (OIs) — infections that a healthy immune system would normally control. AIDS is the point at which the immune system can no longer hold these infections back. Most deaths in people with AIDS are caused not by HIV itself, but by these opportunistic infections and related complications.</p>
+  </section>
 
-<p>HIV attacks CD4 cells — key players in the body's defense system. As these cells are depleted, the body loses its ability to ward off illness, leaving room for serious "opportunistic infections" (OIs) to develop.</p>
+  <section class="card">
+    <h2>🔍 Diagnosis &amp; Testing</h2>
+    <p>Several types of HIV test exist, and a healthcare provider will choose the one that best fits your situation.</p>
+    <div class="typegrid">
+      <div class="t"><h3>Antibody / antigen combination test</h3><p>The most widely used test. It looks for both antibodies and viral antigens, and can usually detect infection 18–45 days after exposure.</p></div>
+      <div class="t"><h3>Antibody-only test</h3><p>Checks blood or saliva for antibodies, which most people develop within 23–90 days. Some rapid versions give results in under 30 minutes.</p></div>
+      <div class="t"><h3>Nucleic acid test (NAT)</h3><p>Detects the virus itself, with a window of 5–21 days. Used for early symptoms or known exposure; usually confirmed with an antibody test.</p></div>
+    </div>
+    <div class="callout info">
+      <strong>ℹ️ Home testing kits</strong>
+      Options such as the OraQuick oral-swab test (results in ~20 minutes) and mail-in finger-prick kits allow private testing at home. A negative home result after a possible exposure should be re-checked at the 3-month mark, and any positive result confirmed by a clinician.
+    </div>
+  </section>
 
-<p>Death in AIDS patients is generally caused not by HIV itself, but by these opportunistic infections or related long-term complications. AIDS describes the point where the immune system can no longer keep such infections at bay.</p>
-</section>
+  <section class="card">
+    <h2>💊 Treatment &amp; Management</h2>
+    <p>There is <strong>no cure</strong> for HIV or AIDS — but modern treatment can stop the virus in its tracks and allow a long, healthy life.</p>
+    <h3>Antiretroviral therapy (ART)</h3>
+    <p>Combination drug regimens (sometimes called HAART or cART) suppress the virus and slow its ability to multiply. Modern treatment can be as simple as a single daily pill. Taken consistently, ART can drive HIV down to <strong>undetectable</strong> levels in the blood. The World Health Organization notes that starting ART early improves quality of life, extends lifespan, and reduces the risk of passing HIV to others.</p>
+    <div class="callout info">
+      <strong>ℹ️ U = U (Undetectable = Untransmittable)</strong>
+      When treatment keeps the viral load undetectable, the CDC confirms there is effectively no risk of passing HIV to sexual partners.
+    </div>
+    <h3>Post-exposure prophylaxis (PEP)</h3>
+    <p>If started within 3 days of a suspected exposure, PEP medication may prevent infection. It is taken for 28 days, followed by continued monitoring.</p>
+    <h3>Complementary approaches</h3>
+    <p>Herbal and alternative remedies are popular but have no proven benefit. Some vitamin or mineral supplements may offer modest support, but they should always be discussed with a provider first, as they can interact with antiretroviral medicines.</p>
+  </section>
 
-<section id="testing">
-<h2>Diagnostic Testing</h2>
-<p>Several testing methods exist for HIV; a provider will select the most suitable option based on individual circumstances.</p>
+  <section class="card">
+    <h2>🛡️ Prevention</h2>
+    <ul class="clean">
+      <li>Use condoms during sex and know your partner's status.</li>
+      <li>Never share needles, syringes, or other injecting equipment.</li>
+      <li>Consider PrEP (pre-exposure prophylaxis) if you are at higher risk.</li>
+      <li>Get tested regularly, and start treatment promptly if positive.</li>
+      <li>Pregnant women with HIV can take medicine to protect their baby.</li>
+    </ul>
+  </section>
 
-<h3>Combination Tests (Antibody/Antigen)</h3>
-<p>The most widely used HIV test. Detection is typically possible 18–45 days after exposure.</p>
-<p>This method screens for both antibodies (proteins made to fight infection) and antigens (viral components that trigger immune response).</p>
-
-<h3>Antibody-Only Screening</h3>
-<p>Looks solely for antibodies, which most people develop within 23–90 days of exposure. Detectable in blood or saliva.</p>
-<p>No special prep is required — samples come from blood draws or oral swabs, with some results ready in under 30 minutes.</p>
-
-<div class="note">
-<strong>Home testing kits:</strong>
-<ol>
-<li>OraQuick HIV Test — oral swab, results in ~20 minutes.</li>
-<li>Home Access HIV-1 Test System — finger-prick sample mailed to a lab; anonymous, next-day results by phone.</li>
-</ol>
+  <footer>
+    This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.
+  </footer>
 </div>
-
-<p>A negative home result after suspected exposure warrants retesting at the 3-month mark. Any positive result should be confirmed by a clinician.</p>
-
-<h3>Nucleic Acid Testing (NAT)</h3>
-<p>Reserved for early symptomatic cases or known exposure risk due to its cost. NAT detects the virus directly rather than antibodies, with a detection window of 5–21 days. Typically confirmed with an antibody test.</p>
-</section>
-
-<section id="treatment">
-<h2>Managing the Condition</h2>
-<p>Sustained antiretroviral therapy (ART) can suppress HIV to undetectable levels in the blood.</p>
-<p><em>No cure currently exists for HIV or AIDS</em> — but treatment can halt progression and support a long, healthy life for many patients.</p>
-
-<p>Per WHO guidance (2013), early initiation of ART improves quality of life, extends lifespan, and reduces transmission risk. Modern regimens can be as simple as one daily pill.</p>
-
-<p>When viral load becomes undetectable through consistent treatment, the CDC — based on large-scale research — confirms there is effectively no risk of sexual transmission to partners. This is known as <strong class="term">U=U</strong> (undetectable = untransmittable).</p>
-
-<h3>Post-Exposure Prophylaxis (PEP)</h3>
-<p>For suspected exposure within the past 3 days, PEP medication started promptly may prevent infection. The regimen runs 28 days, followed by continued monitoring.</p>
-
-<h3>Antiretroviral Drug Therapy</h3>
-<p>Combination drug regimens — HAART or cART — slow viral replication and form the backbone of HIV treatment.</p>
-
-<h3>Complementary Approaches</h3>
-<p>Herbal and alternative remedies remain popular among patients, though no evidence supports their efficacy. Some studies hint at modest benefits from vitamin/mineral supplements, but these should always be discussed with a provider due to potential interactions with antiretroviral medications.</p>
-</section>
-
 </body>
 </html>

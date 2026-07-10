@@ -1,57 +1,52 @@
-# Understanding AIDS
+# 🎗️ HIV & AIDS
+
+> **In short:** AIDS is the most advanced stage of infection with HIV — a virus that weakens the immune system. With today's treatment, HIV can be controlled and progression to AIDS prevented.
+
+| | |
+|---|---|
+| **Full name** | Acquired Immune Deficiency Syndrome |
+| **Caused by** | HIV (human immunodeficiency virus) |
+| **Curable?** | No — but treatable |
+| **Managed with** | Antiretroviral therapy (ART) |
+
+---
 
 ## Overview
 
-**AIDS** (Acquired Immune Deficiency Syndrome) marks the final stage of HIV infection.
+**AIDS** (Acquired Immune Deficiency Syndrome) is the final and most serious stage of infection with **HIV**, the human immunodeficiency virus. HIV targets and destroys CD4 cells — the white blood cells that coordinate the body's defence against infection.
 
-HIV attacks CD4 cells — key players in the body's defense system. As these cells are depleted, the body loses its ability to ward off illness, leaving room for serious "opportunistic infections" (OIs) to develop.
+As the number of CD4 cells falls, the immune system gradually loses its ability to fight off illness. This opens the door to serious **opportunistic infections (OIs)** — infections a healthy immune system would normally control. AIDS is the point at which the immune system can no longer hold these infections back. Most deaths in people with AIDS are caused not by HIV itself, but by these opportunistic infections and related complications.
 
-Death in AIDS patients is generally caused not by HIV itself, but by these opportunistic infections or related long-term complications. AIDS describes the point where the immune system can no longer keep such infections at bay.
+## Diagnosis & Testing
 
-## Diagnostic Testing
+Several types of HIV test exist, and a healthcare provider will choose the one that best fits your situation.
 
-Several testing methods exist for HIV; a provider will select the most suitable option based on individual circumstances.
+- **Antibody / antigen combination test** — the most widely used test. It looks for both antibodies and viral antigens, and can usually detect infection 18–45 days after exposure.
+- **Antibody-only test** — checks blood or saliva for antibodies, which most people develop within 23–90 days. Some rapid versions give results in under 30 minutes.
+- **Nucleic acid test (NAT)** — detects the virus itself, with a window of 5–21 days. Used for early symptoms or known exposure; usually confirmed with an antibody test.
 
-### Combination Tests (Antibody/Antigen)
+> ℹ️ **Home testing kits.** Options such as the OraQuick oral-swab test (results in ~20 minutes) and mail-in finger-prick kits allow private testing at home. A negative home result after a possible exposure should be re-checked at the 3-month mark, and any positive result confirmed by a clinician.
 
-The most widely used HIV test. Detection is typically possible 18–45 days after exposure.
+## Treatment & Management
 
-This method screens for both antibodies (proteins made to fight infection) and antigens (viral components that trigger immune response).
+There is **no cure** for HIV or AIDS — but modern treatment can stop the virus in its tracks and allow a long, healthy life.
 
-### Antibody-Only Screening
+**Antiretroviral therapy (ART)** — Combination drug regimens (sometimes called HAART or cART) suppress the virus and slow its ability to multiply. Modern treatment can be as simple as a single daily pill. Taken consistently, ART can drive HIV down to **undetectable** levels in the blood. The World Health Organization notes that starting ART early improves quality of life, extends lifespan, and reduces the risk of passing HIV to others.
 
-Looks solely for antibodies, which most people develop within 23–90 days of exposure. Detectable in blood or saliva.
+> ℹ️ **U = U (Undetectable = Untransmittable).** When treatment keeps the viral load undetectable, the CDC confirms there is effectively no risk of passing HIV to sexual partners.
 
-No special prep is required — samples come from blood draws or oral swabs, with some results ready in under 30 minutes.
+**Post-exposure prophylaxis (PEP)** — If started within 3 days of a suspected exposure, PEP medication may prevent infection. It is taken for 28 days, followed by continued monitoring.
 
-> **Home testing kits:**
-> - OraQuick HIV Test — oral swab, results in ~20 minutes.
-> - Home Access HIV-1 Test System — finger-prick sample mailed to a lab; anonymous, next-day results by phone.
+**Complementary approaches** — Herbal and alternative remedies are popular but have no proven benefit. Some vitamin or mineral supplements may offer modest support, but they should always be discussed with a provider first, as they can interact with antiretroviral medicines.
 
-A negative home result after suspected exposure warrants retesting at the 3-month mark. Any positive result should be confirmed by a clinician.
+## Prevention
 
-### Nucleic Acid Testing (NAT)
+- Use condoms during sex and know your partner's status.
+- Never share needles, syringes, or other injecting equipment.
+- Consider PrEP (pre-exposure prophylaxis) if you are at higher risk.
+- Get tested regularly, and start treatment promptly if positive.
+- Pregnant women with HIV can take medicine to protect their baby.
 
-Reserved for early symptomatic cases or known exposure risk due to its cost. NAT detects the virus directly rather than antibodies, with a detection window of 5–21 days. Typically confirmed with an antibody test.
+---
 
-## Managing the Condition
-
-Sustained antiretroviral therapy (ART) can suppress HIV to undetectable levels in the blood.
-
-*No cure currently exists for HIV or AIDS* — but treatment can halt progression and support a long, healthy life for many patients.
-
-Per WHO guidance (2013), early initiation of ART improves quality of life, extends lifespan, and reduces transmission risk. Modern regimens can be as simple as one daily pill.
-
-When viral load becomes undetectable through consistent treatment, the CDC — based on large-scale research — confirms there is effectively no risk of sexual transmission to partners. This is known as **U=U** (undetectable = untransmittable).
-
-### Post-Exposure Prophylaxis (PEP)
-
-For suspected exposure within the past 3 days, PEP medication started promptly may prevent infection. The regimen runs 28 days, followed by continued monitoring.
-
-### Antiretroviral Drug Therapy
-
-Combination drug regimens — HAART or cART — slow viral replication and form the backbone of HIV treatment.
-
-### Complementary Approaches
-
-Herbal and alternative remedies remain popular among patients, though no evidence supports their efficacy. Some studies hint at modest benefits from vitamin/mineral supplements, but these should always be discussed with a provider due to potential interactions with antiretroviral medications.
+*This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.*

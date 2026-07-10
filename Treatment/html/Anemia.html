@@ -1,93 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anemia Explained</title>
-<style>
-  * { box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 780px; margin: 0 auto; padding: 30px 20px; color: #2a2a2a; }
-  h1 { font-size: 2em; color: #1a3c5e; }
-  h2 { color: #1a3c5e; border-bottom: 2px solid #cfe0ec; padding-bottom: 6px; }
-  h3 { color: #2a5a7a; }
-  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
-  table td, table th { border: 1px solid #ccc; padding: 8px; text-align: left; }
-  .food-grid { columns: 2; column-gap: 30px; }
-  .warn { font-style: italic; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anemia — Condition Guide</title>
+  <style>
+    :root{--accent:#be123c;--accent-dark:#881337;--accent-soft:#fff1f2;--accent-border:#fecdd3;--ink:#1f2933;--muted:#5b6b7b;--bg:#fbf4f5;--card:#fff;--danger:#dc2626;--danger-soft:#fef2f2;--radius:16px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+    .wrap{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+    .hero{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:54px 20px 66px;text-align:center;}
+    .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:999px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{margin:0;font-size:2.7rem;letter-spacing:-.5px;}
+    .hero p{margin:14px auto 0;max-width:640px;font-size:1.06rem;opacity:.96;}
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-38px 0 30px;}
+    .fact{background:var(--card);border-radius:14px;padding:15px 18px;box-shadow:0 8px 24px rgba(30,40,60,.09);border-top:3px solid var(--accent);}
+    .fact .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+    .fact .v{font-size:1rem;font-weight:600;margin-top:4px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:26px 28px;margin:18px 0;box-shadow:0 6px 18px rgba(30,40,60,.06);border:1px solid #e9edf2;}
+    .card h2{margin:0 0 8px;font-size:1.4rem;color:var(--accent-dark);display:flex;align-items:center;gap:10px;}
+    .card h3{margin:20px 0 6px;font-size:1.06rem;color:var(--ink);}
+    .lead{color:var(--muted);margin-top:4px;}
+    ul.clean{list-style:none;padding:0;margin:14px 0;}
+    ul.clean li{position:relative;padding:7px 0 7px 28px;border-bottom:1px dashed #eef1f6;}
+    ul.clean li:last-child{border-bottom:0;}
+    ul.clean li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+    ul.clean li strong{color:var(--accent-dark);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+    .pill{background:var(--accent-soft);color:var(--accent-dark);border:1px solid var(--accent-border);padding:6px 12px;border-radius:999px;font-size:.9rem;font-weight:500;}
+    table.data{border-collapse:collapse;width:100%;margin:14px 0;font-size:.95rem;}
+    table.data th,table.data td{border:1px solid #e3e8ef;padding:9px 12px;text-align:left;}
+    table.data th{background:var(--accent-soft);color:var(--accent-dark);}
+    .callout{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.97rem;}
+    .callout.warn{background:var(--danger-soft);border:1px solid #fecaca;color:#7f1d1d;}
+    .callout.info{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent-dark);}
+    .callout strong{display:block;margin-bottom:4px;}
+    footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:34px;padding-top:18px;border-top:1px solid #e2e8f0;}
+    @media(max-width:560px){.hero h1{font-size:2rem;}}
+  </style>
 </head>
 <body>
+<header class="hero">
+  <span class="badge">Blood Disorder</span>
+  <h1>Anemia</h1>
+  <p>A condition in which the blood carries too little oxygen because it lacks enough healthy red blood cells or haemoglobin — leaving you tired, weak, and short of breath.</p>
+</header>
+<div class="wrap">
 
-<h1>Anemia Explained</h1>
+  <section class="facts">
+    <div class="fact"><div class="k">Category</div><div class="v">Blood disorder</div></div>
+    <div class="fact"><div class="k">Most common type</div><div class="v">Iron deficiency</div></div>
+    <div class="fact"><div class="k">Key sign</div><div class="v">Fatigue &amp; paleness</div></div>
+    <div class="fact"><div class="k">Curable?</div><div class="v">Often, once the cause is treated</div></div>
+  </section>
 
-<p><strong>Anemia</strong> is a condition marked by low hemoglobin in red blood cells (RBCs) — the protein responsible for shuttling oxygen to body tissues.</p>
+  <section class="card">
+    <h2>🩸 Overview</h2>
+    <p><strong>Anemia</strong> develops when the level of haemoglobin in your red blood cells drops too low. Haemoglobin is the iron-rich protein that carries oxygen from your lungs to the rest of your body, so when it runs short, your tissues don't get all the oxygen they need.</p>
+    <p>The most common form is <strong>iron deficiency anemia</strong>, which occurs when the body's iron stores run low — since iron is a building block of haemoglobin. This type often develops slowly and can go unnoticed for years, with symptoms easy to overlook until a cause is found. In women of childbearing age, heavy periods and pregnancy are leading causes of iron loss, while poor diet and intestinal absorption problems also contribute.</p>
+  </section>
 
-<p>The most common variant, <strong>iron deficiency anemia</strong>, occurs when the body's iron stores run low, since iron is a building block of hemoglobin. Without it, oxygen delivery throughout the body suffers.</p>
+  <section class="card">
+    <h2>🩺 Symptoms</h2>
+    <div class="pills">
+      <span class="pill">Tiredness &amp; weakness</span>
+      <span class="pill">Pale skin</span>
+      <span class="pill">Shortness of breath</span>
+      <span class="pill">Dizziness</span>
+      <span class="pill">Cold hands &amp; feet</span>
+      <span class="pill">Headache</span>
+      <span class="pill">Brittle nails</span>
+    </div>
+    <p>Early on, symptoms may be so mild they go unnoticed. They tend to grow more obvious as the anemia deepens.</p>
+  </section>
 
-<p>This form of anemia often goes unnoticed for years, with symptoms easy to overlook until a cause is found.</p>
+  <section class="card">
+    <h2>🔍 How Doctors Diagnose It</h2>
+    <p>Diagnosis usually begins with a review of your medical history and a physical exam, followed by lab work:</p>
+    <table class="data">
+      <tr><th>Test</th><th>Purpose</th></tr>
+      <tr><td>Complete Blood Count (CBC)</td><td>Measures haematocrit and haemoglobin levels</td></tr>
+      <tr><td>Red-cell morphology</td><td>Examines the size, shape, and colour of red blood cells</td></tr>
+    </table>
+    <p>Typical haematocrit is 40–52% in men and 35–47% in women; typical haemoglobin is 14–18 g/dL in men and 12–16 g/dL in women (ranges vary slightly between labs). Once anemia is confirmed, follow-up testing — occasionally including a bone-marrow sample — may be needed to find the underlying cause.</p>
+  </section>
 
-<p>Among women of childbearing age, heavy periods or pregnancy are the leading causes of iron loss. Poor diet and intestinal disorders affecting absorption are other contributing factors.</p>
+  <section class="card">
+    <h2>💊 Treatment</h2>
+    <h3>Iron supplements</h3>
+    <p>Oral iron tablets restore depleted stores. They are best absorbed on an empty stomach, though taking them with food can help if they upset your stomach. Treatment may last several months; possible side effects include constipation and darkened stools.</p>
+    <h3>Dietary adjustments</h3>
+    <p>Building more iron into your diet supports recovery — dark leafy greens, dried fruit, nuts, and iron-fortified cereal all help. Pairing iron with vitamin C (such as citrus juice) improves how well the body absorbs it.</p>
+    <h3>Treating the root cause</h3>
+    <p>If heavy bleeding is behind the deficiency, supplements alone won't fix it — a doctor may prescribe treatment to reduce menstrual flow. In severe cases, a blood transfusion may be needed to quickly restore blood volume and iron.</p>
+  </section>
 
-<h2>How Doctors Diagnose It</h2>
-<p>Diagnosis usually starts with a medical history review and physical exam, followed by lab work:</p>
+  <section class="card">
+    <h2>🛡️ Prevention</h2>
+    <p>A diet rich in iron and vitamin C helps prevent deficiency from dietary causes. Infants should receive breast milk or iron-fortified formula.</p>
+    <h3>Iron-rich foods</h3>
+    <div class="pills">
+      <span class="pill">Beans</span><span class="pill">Pumpkin &amp; squash seeds</span><span class="pill">Spinach &amp; leafy greens</span>
+      <span class="pill">Raisins &amp; dried fruit</span><span class="pill">Eggs</span><span class="pill">Clams, sardines, shrimp, oysters</span>
+      <span class="pill">Iron-fortified cereals</span>
+    </div>
+    <h3>Vitamin C-rich foods</h3>
+    <div class="pills">
+      <span class="pill">Citrus &amp; berries</span><span class="pill">Kiwi, guava, papaya</span><span class="pill">Broccoli</span>
+      <span class="pill">Bell peppers</span><span class="pill">Brussels sprouts</span><span class="pill">Tomatoes</span>
+    </div>
+  </section>
 
-<table>
-<tr><th>Test</th><th>Purpose</th></tr>
-<tr><td>Complete Blood Count (CBC)</td><td>Measures hematocrit and hemoglobin levels</td></tr>
-<tr><td>RBC morphology check</td><td>Examines cell size, shape, and color</td></tr>
-</table>
-
-<p>Typical hematocrit: 40–52% (men), 35–47% (women). Typical hemoglobin: 14–18 g/dL (men), 12–16 g/dL (women). Ranges can vary slightly between labs.</p>
-
-<p>Follow-up testing — occasionally including a bone marrow sample — may be needed to determine the underlying cause once anemia is confirmed.</p>
-
-<h2>Treatment Paths</h2>
-
-<h3>Iron Supplements</h3>
-<p>Oral iron tablets restore depleted stores. Best absorbed on an empty stomach, though food can help if they cause stomach upset. Treatment may run several months; possible side effects include constipation and dark stools.</p>
-
-<h3>Dietary Adjustments</h3>
-<div class="food-grid">
-<ul>
-<li>Dark leafy greens</li>
-<li>Dried fruit</li>
-<li>Nuts</li>
-<li>Iron-fortified cereal</li>
-</ul>
+  <footer>
+    This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.
+  </footer>
 </div>
-<p>Pairing iron intake with vitamin C (like citrus juice) improves absorption.</p>
-
-<h3>Treating the Root Cause</h3>
-<p>If heavy bleeding is behind the deficiency, supplements alone won't fix it — doctors may prescribe birth control to reduce menstrual flow. <span class="warn">In severe cases, a blood transfusion may be required to quickly restore iron and blood volume.</span></p>
-
-<h2>Prevention Tips</h2>
-<p>A diet rich in iron and vitamin C helps prevent deficiency from dietary causes. Infants should receive breast milk or iron-fortified formula.</p>
-
-<h3>Iron-Rich Foods</h3>
-<div class="food-grid">
-<ul>
-<li>Beans</li>
-<li>Pumpkin/squash seeds</li>
-<li>Spinach and other leafy greens</li>
-<li>Raisins and dried fruit</li>
-<li>Eggs</li>
-<li>Clams, sardines, shrimp, oysters</li>
-<li>Iron-fortified cereals</li>
-</ul>
-</div>
-
-<h3>Vitamin C-Rich Foods</h3>
-<div class="food-grid">
-<ul>
-<li>Oranges, grapefruit, strawberries, kiwi, guava, papaya, pineapple, melon, mango</li>
-<li>Broccoli</li>
-<li>Red and green bell peppers</li>
-<li>Brussels sprouts</li>
-<li>Cauliflower</li>
-<li>Tomatoes</li>
-<li>Leafy greens</li>
-</ul>
-</div>
-
 </body>
 </html>
