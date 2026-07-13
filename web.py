@@ -1,4 +1,15 @@
-app.route('/')
+import json
+import html
+import uuid
+
+from flask import Flask, render_template_string, request, jsonify
+
+app = Flask(__name__)
+
+sessions = {}
+
+
+@app.route('/')
 def index():
     return render_template_string(MAIN_PAGE)
 
