@@ -5,6 +5,17 @@ import builtins
 from contextlib import contextmanager
 import io
 from contextlib import redirect_stdout
+
+# Compatibility shim: experta's old `frozendict` dependency references
+# `collections.Mapping`, which was moved to `collections.abc` in Python 3.3
+# and removed in Python 3.10+. Restore the aliases so experta can import.
+import collections
+import collections.abc
+for _abc_name in ("Mapping", "MutableMapping", "Sequence", "Iterable",
+                  "Set", "Callable", "Hashable"):
+    if not hasattr(collections, _abc_name):
+        setattr(collections, _abc_name, getattr(collections.abc, _abc_name))
+
 try:
     from experta import *
 except Exception:
@@ -130,9 +141,10 @@ def engine_io_context(adapter):
 
 ### Helper functions ###
 
-def multi_input(input_str, options=[]):
+def multi_input(input_str, options=[], key=None):
+    """`key` identifies the question in web mode so it is stored and asked once."""
     if _ACTIVE_IO is not None:
-        return _ACTIVE_IO.multi_input(input_str, options)
+        return _ACTIVE_IO.multi_input(input_str, options, key)
 
     print(input_str)
 
@@ -160,9 +172,10 @@ def multi_input(input_str, options=[]):
         except:
             print("Invalid input. Try again.")
 
-def yes_no(input_str):
+def yes_no(input_str, key=None):
+    """`key` identifies the question in web mode so it is stored and asked once."""
     if _ACTIVE_IO is not None:
-        return _ACTIVE_IO.yes_no(input_str)
+        return _ACTIVE_IO.yes_no(input_str, key)
 
     input_str += " (yes/no): "
 
@@ -184,3 +197,25 @@ def yes_no(input_str):
 
         except EOFError:
             print("\nInput error. Please try again.")
+
+def suggest_disease(disease, symptoms):
+    if _ACTIVE_IO is not None:
+        _ACTIVE_IO.diagnose(disease, symptoms)
+
+    print(f"\nYou might be suffering from {disease}")
+
+    symptoms_text = '- ' + '\n - '.join(symptoms)
+
+    print(f"This conclusion is reached because you show symptoms among the following:\n{symptoms_text}")
+
+    open_doc = yes_no(f"\nDo you want to know more regarding {disease}?")
+
+    if open_doc == "yes":
+        html_file = os.path.join(os.getcwd(), "Treatment", "html", f"{disease}.html")
+
+        if os.path.exists(html_file):
+            webbrowser.open(f"file:///{html_file}", new=2)
+        else:
+            print(f"HTML file for {disease} not found.")
+
+    raise SystemExit
