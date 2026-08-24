@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuberculosis — Condition Guide</title>
+  <style>
+    :root{--accent:#b91c1c;--accent-dark:#7f1d1d;--accent-soft:#fef2f2;--accent-border:#fecaca;--ink:#1f2933;--muted:#5b6b7b;--bg:#fbf5f5;--card:#fff;--danger:#dc2626;--danger-soft:#fef2f2;--radius:16px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+    .wrap{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+    .hero{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:54px 20px 66px;text-align:center;}
+    .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:999px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{margin:0;font-size:2.7rem;letter-spacing:-.5px;}
+    .hero p{margin:14px auto 0;max-width:640px;font-size:1.06rem;opacity:.96;}
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-38px 0 30px;}
+    .fact{background:var(--card);border-radius:14px;padding:15px 18px;box-shadow:0 8px 24px rgba(30,40,60,.09);border-top:3px solid var(--accent);}
+    .fact .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+    .fact .v{font-size:1rem;font-weight:600;margin-top:4px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:26px 28px;margin:18px 0;box-shadow:0 6px 18px rgba(30,40,60,.06);border:1px solid #e9edf2;}
+    .card h2{margin:0 0 8px;font-size:1.4rem;color:var(--accent-dark);display:flex;align-items:center;gap:10px;}
+    .card h3{margin:20px 0 6px;font-size:1.06rem;color:var(--ink);}
+    .lead{color:var(--muted);margin-top:4px;}
+    ul.clean{list-style:none;padding:0;margin:14px 0;}
+    ul.clean li{position:relative;padding:7px 0 7px 28px;border-bottom:1px dashed #eef1f6;}
+    ul.clean li:last-child{border-bottom:0;}
+    ul.clean li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+    ul.clean li strong{color:var(--accent-dark);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+    .pill{background:var(--accent-soft);color:var(--accent-dark);border:1px solid var(--accent-border);padding:6px 12px;border-radius:999px;font-size:.9rem;font-weight:500;}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0;}
+    .split .box{border:1px solid var(--accent-border);border-radius:12px;padding:16px 18px;background:var(--accent-soft);}
+    .split .box h3{margin:0 0 6px;color:var(--accent-dark);}
+    .callout{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.97rem;}
+    .callout.warn{background:var(--danger-soft);border:1px solid #fecaca;color:#7f1d1d;}
+    .callout strong{display:block;margin-bottom:4px;}
+    footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:34px;padding-top:18px;border-top:1px solid #e2e8f0;}
+    @media(max-width:560px){.hero h1{font-size:2rem;}.split{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<header class="hero">
+  <span class="badge">Bacterial Infection</span>
+  <h1>Tuberculosis (TB)</h1>
+  <p>A potentially serious infectious disease that mainly attacks the lungs, spread through the air when an infected person coughs or sneezes. It is treatable — but needs a long, complete course of medication.</p>
+</header>
+<div class="wrap">
+
+  <section class="facts">
+    <div class="fact"><div class="k">Caused by</div><div class="v">TB bacteria</div></div>
+    <div class="fact"><div class="k">Mainly affects</div><div class="v">The lungs</div></div>
+    <div class="fact"><div class="k">Spreads via</div><div class="v">Airborne droplets</div></div>
+    <div class="fact"><div class="k">Two states</div><div class="v">Latent &amp; active</div></div>
+  </section>
+
+  <section class="card">
+    <h2>🫁 Overview</h2>
+    <p><strong>Tuberculosis (TB)</strong> is a potentially serious infectious disease that mainly affects the lungs. The bacteria that cause it spread from person to person through tiny droplets released into the air when someone with active TB coughs or sneezes.</p>
+    <p>Many strains resist the drugs most commonly used against the disease, so people with active TB must take several medications for many months — both to clear the infection and to prevent drug resistance from developing.</p>
+    <div class="split">
+      <div class="box"><h3>Latent TB</h3><p>The bacteria are present but dormant. You have no symptoms and aren't contagious, but it can become active later.</p></div>
+      <div class="box"><h3>Active TB</h3><p>The bacteria are multiplying and making you ill. You have symptoms and can spread it to others.</p></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🩺 Symptoms (Active TB)</h2>
+    <div class="pills">
+      <span class="pill">Cough lasting 3+ weeks</span><span class="pill">Coughing up blood</span><span class="pill">Chest pain</span>
+      <span class="pill">Weight loss</span><span class="pill">Night sweats</span><span class="pill">Fever</span><span class="pill">Fatigue</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🔍 Diagnosis</h2>
+    <p>During the exam, your doctor checks your lymph nodes for swelling and listens to your lungs. Tests include:</p>
+    <ul class="clean">
+      <li><strong>Skin test (PPD)</strong> — a small amount of tuberculin is injected under the skin of the forearm; a hard, raised bump after 48–72 hours suggests infection. It isn't perfect — recent BCG vaccination can cause false positives, and some groups (children, older people, those with AIDS) can have false negatives.</li>
+      <li><strong>Blood tests</strong> — measure the immune system's reaction to TB bacteria in a single visit; useful when the skin test is unreliable.</li>
+      <li><strong>Imaging</strong> — a chest X-ray or CT scan can reveal spots or changes in the lungs caused by TB.</li>
+      <li><strong>Sputum tests</strong> — mucus samples are checked for TB bacteria and for drug-resistant strains; these can take four to eight weeks.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>💊 Treatment</h2>
+    <p>With early detection and the right antibiotics, TB is treatable. The medications and length of treatment depend on your age and health, whether the TB is latent or active, where the infection is, and whether the strain is drug-resistant.</p>
+    <ul class="clean">
+      <li><strong>Latent TB</strong> — may involve an antibiotic once a week for 12 weeks, or daily for 9 months.</li>
+      <li><strong>Active TB</strong> — usually several drugs taken for 6–9 months. Drug-resistant TB requires a longer, more complex regimen.</li>
+    </ul>
+    <div class="callout warn">
+      <strong>⚠️ Finish the full course</strong>
+      It is essential to complete the entire treatment, even after symptoms disappear. Stopping early lets some bacteria survive and become resistant to antibiotics — leading to harder-to-treat drug-resistant TB.
+    </div>
+    <p>Depending on which parts of the body are affected, a doctor may also prescribe corticosteroids.</p>
+  </section>
+
+  <section class="card">
+    <h2>🛡️ Prevention</h2>
+    <ul class="clean">
+      <li>The BCG vaccine is used in many high-TB countries, especially for children.</li>
+      <li>People with active TB should cover coughs and stay home during the early, contagious phase of treatment.</li>
+      <li>Ensure good ventilation in shared indoor spaces.</li>
+      <li>People with latent TB can take preventive treatment to stop it becoming active.</li>
+    </ul>
+  </section>
+
+  <footer>
+    This guide is for general information and education only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your health.
+  </footer>
+</div>
+</body>
+</html>
