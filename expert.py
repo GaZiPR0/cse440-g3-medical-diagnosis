@@ -512,3 +512,576 @@ def diagnose_from_answers(answers):
                 "Smoking history", "Frequent chest infections",
                 "Tightness in chest"
             ]
+
+    if normal_fever:
+        if (
+            a.get("nf_chest_pain") == "yes"
+            and a.get("fatigue") == "yes"
+            and a.get("chills") == "yes"
+            and yes_count("tb_persistent_cough", "weight_loss", "night_sweats", "cough_blood") >= 2
+        ):
+            return "Tuberculosis", [
+                "Fever", "Chest pain", "Fatigue", "Loss of appetite", "Persistent cough"
+            ]
+
+        if (
+            a.get("fatigue") == "yes"
+            and a.get("sore_throat") == "yes"
+            and yes_count(
+                "weakness", "dry_cough", "muscle_ache",
+                "chills", "nasal_congestion", "headache"
+            ) >= 4
+        ):
+            return "Influenza", [
+                "Fever", "Fatigue", "Sore throat", "Weakness",
+                "Dry cough", "Muscle aches", "Chills",
+                "Nasal congestion", "Headache"
+            ]
+
+        if (
+            a.get("fatigue") == "yes"
+            and a.get("abdominal_pain") == "yes"
+            and yes_count("flu_like", "dark_urine", "pale_stool", "weight_loss", "jaundice") >= 3
+        ):
+            return "Hepatitis", [
+                "Fever", "Fatigue", "Abdominal pain", "Flu-like symptoms",
+                "Dark urine", "Pale stool", "Weight loss",
+                "Yellow eyes and skin (jaundice)"
+            ]
+
+        if (
+            a.get("nf_chest_pain") == "yes"
+            and a.get("short_breath") == "yes"
+            and a.get("nausea") == "yes"
+            and yes_count("rest_breathless", "high_sweat", "rapid_breath", "cough_phlegm", "diarrhea") >= 3
+        ):
+            return "Pneumonia", [
+                "Fever", "Chest pain", "Shortness of breath", "Nausea",
+                "Sweating with chills", "Rapid breathing",
+                "Cough with phlegm", "Diarrhea"
+            ]
+
+        if (
+            a.get("chills") == "yes"
+            and a.get("abdominal_pain") == "yes"
+            and a.get("nausea") == "yes"
+            and yes_count("headache", "sweat", "cough", "weakness", "muscle_ache", "back_pain") >= 4
+        ):
+            return "Malaria", [
+                "Fever", "Chills", "Abdominal pain", "Nausea",
+                "Headache", "Sweating", "Cough", "Weakness",
+                "Muscle pain", "Back pain"
+            ]
+
+        if a.get("rashes") == "yes" and yes_count(
+            "headache", "muscle_ache", "sore_throat", "lymph",
+            "diarrhea", "cough", "weight_loss", "night_sweats"
+        ) >= 6:
+            return "AIDS", [
+                "Fever", "Rashes", "Headache", "Muscle ache",
+                "Sore throat", "Swollen lymph nodes", "Diarrhea",
+                "Cough", "Weight loss", "Night sweat"
+            ]
+
+        if a.get("nausea") == "yes" and yes_count(
+            "upper_abdominal_pain", "pain_after_eating",
+            "heartbeat_fast", "weight_loss", "oily_stool"
+        ) >= 3:
+            return "Pancreatitis", [
+                "Nausea", "Fever", "Upper abdominal pain",
+                "Heartbeat", "Weight loss", "Oily and smelly stool"
+            ]
+
+        if (
+            a.get("fatigue") == "yes"
+            and a.get("short_breath") == "yes"
+            and a.get("nausea") == "yes"
+            and yes_count("chills", "cough", "body_aches", "headache", "sore_throat", "lose_smell", "diarrhea") >= 4
+        ):
+            return "Corona Virus", [
+                "Fever", "Fatigue", "Shortness of breath", "Nausea",
+                "Chills", "Cough", "Body aches", "Headache",
+                "Sore throat", "Diarrhea", "Loss of taste/smell"
+            ]
+
+        if a.get("abdominal_pain") == "yes" and yes_count(
+            "burning_urination", "frequent_urge", "cloudy_urine",
+            "flank_pain", "blood_urine", "constant_urge"
+        ) >= 4:
+            return "Urinary Tract Infection", [
+                "Fever", "Lower abdominal pain", "Burning sensation while urinating",
+                "Frequent urination", "Cloudy or strong smelling urine",
+                "Lower back or flank pain", "Blood in urine",
+                "Constant urge to urinate"
+            ]
+
+        if a.get("nausea") == "yes" and yes_count(
+            "watery_diarrhea", "cramps", "repeated_vomiting",
+            "after_outside_food", "fluid_loss", "gastro_muscle_ache"
+        ) >= 4:
+            return "Gastroenteritis", [
+                "Fever", "Nausea", "Watery diarrhoea", "Stomach cramps",
+                "Repeated vomiting", "Recent outside food",
+                "Weakness and dry mouth", "Mild muscle aches"
+            ]
+
+    return None, []
+
+
+class DiagnosisFlow:
+    """Web wrapper that replays the exact terminal engine to fetch the next question."""
+
+    def __init__(self):
+        self.answers = {}
+        self.result = None
+        self.current_question = None
+        self.done = False
+        self.history = []
+        self.prediction_prompted = None
+
+    def get_current_question(self):
+        if self.done:
+            return None
+
+        if self.current_question is not None:
+            return self.current_question
+
+        if not EXPERTA_AVAILABLE:
+            self.done = True
+            self.result = {
+                "disease": None,
+                "symptoms": [],
+                "error": "experta is required to run the exact terminal engine."
+            }
+            return None
+
+        adapter = EngineIOAdapter(self.answers)
+        engine = MedicalExpert()
+
+        try:
+            with engine_io_context(adapter), redirect_stdout(io.StringIO()):
+                engine.reset()
+                engine.run()
+        except NeedInput as need:
+            question = need.question
+            if question["key"] == "gender":
+                question = dict(question)
+                question["type"] = "select"
+                question["options"] = ["Male", "Female"]
+            if not self.history or self.history[-1]["key"] != question["key"]:
+                self.history.append(dict(question))
+            self.current_question = question
+            return question
+        except DiagnosisComplete as result:
+            self.result = {"disease": result.disease, "symptoms": result.symptoms}
+            self.done = True
+            return None
+
+        self.result = {"disease": None, "symptoms": []}
+        self.done = True
+        return None
+
+    def submit_answer(self, key, answer):
+        self.answers[key] = answer
+        self.current_question = None
+        self.result = None
+        self.done = False
+
+    def run_diagnosis(self):
+        if self.result:
+            return self.result.get("disease"), self.result.get("symptoms", [])
+
+        adapter = EngineIOAdapter(self.answers)
+        engine = MedicalExpert()
+
+        try:
+            with engine_io_context(adapter), redirect_stdout(io.StringIO()):
+                engine.reset()
+                engine.run()
+        except DiagnosisComplete as result:
+            self.result = {"disease": result.disease, "symptoms": result.symptoms}
+            return result.disease, result.symptoms
+        except NeedInput:
+            return None, []
+
+        self.result = {"disease": None, "symptoms": []}
+        return None, []
+
+    def start_edit(self, key):
+        if key not in self.answers:
+            return
+
+        keep_keys = []
+        trimmed_history = []
+
+        for question in self.history:
+            trimmed_history.append(question)
+            keep_keys.append(question["key"])
+            if question["key"] == key:
+                break
+
+        self.history = trimmed_history
+        self.answers = {k: self.answers[k] for k in keep_keys if k in self.answers}
+        self.current_question = None
+        self.result = None
+        self.done = False
+        self.prediction_prompted = None
+
+    def revise_answer(self, key, answer):
+        self.start_edit(key)
+        self.answers[key] = answer
+        self.current_question = None
+        self.result = None
+        self.done = False
+
+
+# ============================================================
+# HTML TEMPLATES
+# ============================================================
+
+if EXPERTA_AVAILABLE:
+    class MedicalExpert(KnowledgeEngine):
+    
+        @DefFacts()
+        def _initial_action_(self):
+            print("Hi. I am an Expert System who can help you in medical diagnosis.")
+            print("When prompted with options, enter space seperated integer values corresponding to all the options which apply to you.")
+            print("Please answer the following questions to find out the disease and its cure")
+            # yeild all the facts you require here
+            yield Fact(action="engine_start")
+            
+        @Rule(Fact(action="engine_start"))
+        def getUserInfo(self):
+            self.declare(Fact(name=input("What's your name? : ")))
+            self.declare(Fact(gender=input("what's your gender?(m/f) : ")))
+            self.declare(Fact(action="medical_history"))
+    
+        @Rule(Fact(action="medical_history"))
+        def askMedicalHistory(self):
+            print("\n" + "="*60)
+            print("Now let me ask about your medical history.")
+            print("This information helps me provide better diagnosis.")
+            print("="*60)
+    
+            diabetes = yes_no("Do you have Diabetes?", key="diabetes")
+            if diabetes == "yes":
+                self.declare(Fact(diabetes="yes"))
+                diabetes_type = multi_input("What type of diabetes?", ["Type 1", "Type 2", "Gestational", "Don't know"], key="diabetes_type")
+                if diabetes_type[0] != "none":
+                    diabetes_type_clean = diabetes_type[0].replace(" ", "_").replace(",", "")
+                    self.declare(Fact(diabetes_type=diabetes_type_clean))
+            else:
+                self.declare(Fact(diabetes="no"))
+    
+            blood_pressure = yes_no("Do you have High Blood Pressure (Hypertension)?", key="hypertension")
+            if blood_pressure == "yes":
+                self.declare(Fact(hypertension="yes"))
+                bp_managed = yes_no("Is it managed with medication?", key="hypertension_managed")
+                self.declare(Fact(hypertension_managed=bp_managed))
+            else:
+                self.declare(Fact(hypertension="no"))
+    
+            heart_disease = yes_no("Do you have any Heart Disease?", key="heart_disease")
+            if heart_disease == "yes":
+                self.declare(Fact(heart_disease="yes"))
+                heart_condition = multi_input("What type of heart condition?", ["Coronary Artery Disease", "Heart Failure", "Arrhythmia", "Heart Valve Problem", "Other"], key="heart_condition_type")
+                if heart_condition[0] != "none":
+                    heart_condition_clean = heart_condition[0].replace(" ", "_").replace(",", "")
+                    self.declare(Fact(heart_condition_type=heart_condition_clean))
+            else:
+                self.declare(Fact(heart_disease="no"))
+    
+            asthma_history = yes_no("Do you have Asthma?", key="asthma_history")
+            self.declare(Fact(asthma=asthma_history))
+    
+            kidney_disease = yes_no("Do you have Kidney Disease?", key="kidney_disease")
+            self.declare(Fact(kidney_disease=kidney_disease))
+    
+            liver_disease = yes_no("Do you have Liver Disease?", key="liver_disease")
+            self.declare(Fact(liver_disease=liver_disease))
+    
+            thyroid = yes_no("Do you have Thyroid Disorder?", key="thyroid")
+            if thyroid == "yes":
+                self.declare(Fact(thyroid_disorder="yes"))
+                thyroid_type = multi_input("What type?", ["Hyperthyroidism", "Hypothyroidism", "Don't know"], key="thyroid_type")
+                if thyroid_type[0] != "none":
+                    thyroid_type_clean = thyroid_type[0].replace(" ", "_").replace(",", "")
+                    self.declare(Fact(thyroid_type=thyroid_type_clean))
+            else:
+                self.declare(Fact(thyroid_disorder="no"))
+    
+            cancer_history = yes_no("Do you have or had Cancer?", key="cancer_history")
+            if cancer_history == "yes":
+                self.declare(Fact(cancer_history="yes"))
+                cancer_type = multi_input("What type (if known)?", ["Blood", "Lung", "Breast", "Colon", "Prostate", "Other", "Don't know"], key="cancer_type")
+                if cancer_type[0] != "none":
+                    cancer_type_clean = cancer_type[0].replace(" ", "_").replace(",", "")
+                    self.declare(Fact(cancer_type=cancer_type_clean))
+            else:
+                self.declare(Fact(cancer_history="no"))
+    
+            # Allergies
+            allergies = yes_no("Do you have any known drug allergies?", key="drug_allergies")
+            if allergies == "yes":
+                self.declare(Fact(drug_allergies="yes"))
+                allergy_details = input("Please list your drug allergies: ")
+                if allergy_details.strip():
+                    self.declare(Fact(allergy_details=allergy_details))
+            else:
+                self.declare(Fact(drug_allergies="no"))
+    
+            # Current medications
+            meds = yes_no("Are you currently taking any medications?", key="current_medications")
+            if meds == "yes":
+                self.declare(Fact(current_medications="yes"))
+                med_details = input("Please list your current medications: ")
+                if med_details.strip():
+                    self.declare(Fact(medication_details=med_details))
+            else:
+                self.declare(Fact(current_medications="no"))
+    
+            self.declare(Fact(action="questionnaire"))
+        
+        @Rule(Fact(action="questionnaire"))
+        def askBasicQuestions(self):
+            self.declare(Fact(red_eyes=yes_no("Do you suffer from red eyes?", key="red_eyes")))
+            self.declare(Fact(fatigue=yes_no("Are you suffering from fatigue?", key="fatigue")))
+            self.declare(Fact(short_breath=yes_no("Are you having shortness of breath?", key="short_breath")))
+            self.declare(Fact(appetite_loss=yes_no("Are you having loss of appetite?", key="appetite_loss")))
+            fevers = multi_input("Do you suffer from fever?", ["Normal Fever","Low Fever","High Fever"], key="fever_type")
+            if fevers[0]!="none":
+                self.declare(Fact(fever="yes"))
+                for f in fevers:
+                    f=f.replace(" ","_")
+                    self.declare(Fact(f)) 
+            else:
+                self.declare(Fact(fever="no"))
+    
+        @Rule(AND(Fact(appetite_loss="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(fatigue="no")))
+        def askRelatedToAppetiteLoss(self):
+            self.declare(Fact(joint_pain=yes_no("Are you having any joint pains?", key="joint_pain")))
+            vomits = multi_input("Did you have vomitings?", ["Severe Vomiting", "Normal Vomiting"], key="vomit_type")
+            if vomits[0]!="none":
+                self.declare(Fact(vomit="yes"))
+                for v in vomits:
+                    v=v.replace(" ","_")
+                    self.declare(Fact(v))
+            else:
+                self.declare(Fact(vomit="no"))
+    
+        @Rule(AND(Fact(appetite_loss="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(fatigue="no"), Fact(joint_pain="yes")))
+        def askArthritis(self):
+            stiff_joint=yes_no("Are you having stiff Joints?", key="stiff_joint")
+            swell_joint=yes_no("Are you experiencing swelly Joints?", key="swell_joint")
+            red_skin_around_joint=yes_no("Did the skin turn red around the Joints?", key="red_skin_joint")
+            decreased_range=yes_no("Did the range of motion decrease at the Joints?", key="decreased_range")
+            tired=yes_no("Are you feeling tired even if you walk small distance?", key="tired_small_walk")
+            count=0
+            for string in [stiff_joint, swell_joint, red_skin_around_joint, decreased_range, tired]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=3:
+                symptoms = ["Stiff joints", "Swelling in joints", "Joint Pains", "Red shik around joints", "Tiredness", "Reduced Movement near joints", "Appetite loss"]
+                suggest_disease("Arthritis", symptoms)
+    
+        @Rule(AND(Fact(appetite_loss="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(fatigue="no"), Fact("Severe_Vomiting")))
+        def askPepticUlcer(self):
+            burning_stomach=yes_no("Is your stomach has burning sensation?", key="burning_stomach")
+            bloating=yes_no("Are you having a feeling of fullness, bloating or belching?", key="bloating")
+            mild_nausea=yes_no("Are you having mild Nausea?", key="mild_nausea")
+            weight_loss=yes_no("Did you lose your weight?", key="weight_loss")
+            abdominal_pain=yes_no("Are you having an intense and localized abdominal pain?", key="abdominal_pain")
+            count=0
+            for string in [burning_stomach, bloating, mild_nausea, weight_loss, abdominal_pain]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=3:
+                symptoms = ["Appetite loss", "Severe Vomiting", "Burning sensation in stomach", "Bloated stomach", "Nausea", "Weight loss", "Abdominal pain"]
+                suggest_disease("Peptic Ulcer", symptoms)
+    
+        @Rule(AND(Fact(appetite_loss="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(fatigue="no"), Fact("Normal_Vomiting")))
+        def askGastritis(self):
+            nausea=yes_no("Are you having a feeling of vomiting(Nausea)?", key="nausea")
+            fullness=yes_no("Are you having a feeling of fullness in your upper abdomen?", key="fullness")
+            bloating=yes_no("Are you feeling bloating in your abdomen?", key="bloating")
+            abdominal_pain=yes_no("Are you having pain near abdomen?", key="abdominal_pain")
+            indigestion=yes_no("Are you facing problems of indigestion?", key="indigestion")
+            gnawing=yes_no("Are you experiencing gnawing or burning ache or pain in your upper abdomen that may become either worse or better with eating", key="gnawing")
+            count=0
+            for string in [nausea, fullness, bloating, abdominal_pain, indigestion, gnawing]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=4:
+                symptoms = ["Appetite loss", "Vomiting", "Nausea", "Fullness near abdomen", "Bloating near abdomen", "Abdominal pain", "Indigestion", "Gnawing pain near abdomen"]
+                suggest_disease("Gastritis", symptoms)
+    
+    
+        @Rule(AND(Fact(fatigue="yes"), Fact(fever="no"), Fact(short_breath="no")))
+        def askRelatedToFatigue(self):
+            self.declare(Fact(extreme_thirst=yes_no("Are you feeling extremely thirsty than before?", key="extreme_thirst")))
+            self.declare(Fact(extreme_hunger=yes_no("Are you feeling extremely hungry than before?", key="extreme_hunger")))
+            self.declare(Fact(dizziness=yes_no("Are you feeling dizzy?", key="dizziness")))
+            self.declare(Fact(muscle_weakness=yes_no("Are your muscles weaker than berfore?", key="muscle_weakness")))
+    
+        @Rule(AND(Fact(fatigue="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(extreme_thirst="yes"), Fact(extreme_hunger="yes")))
+        def askDiabetes(self):
+            frequent_urination=yes_no("Is your Urination more frequent than before?", key="frequent_urination")
+            weight_loss=yes_no("Did you lose your weight unintentionally?", key="weight_loss")
+            irratabiliry=yes_no("Are you more irritable now a days?", key="irritability")
+            blurred_vision=yes_no("Did your vision get blurred?", key="blurred_vision")
+            frequent_infections=yes_no("Are you having frequent infections such as gums or skin infections", key="frequent_infections")
+            sores=yes_no("Are your sores healing slowly?", key="slow_healing_sores")
+            count=0
+            for string in [frequent_urination, weight_loss, irratabiliry, blurred_vision, frequent_infections, sores]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=4:
+                symptoms = ["Fatigue", "Extreme thirst", "Extreme hunger", "Weight loss", "Blurred vision", "Frequent infections", "Frequent urination", "Irritability", "Slow healing of sores"]
+                suggest_disease("Diabetes", symptoms)
+    
+        @Rule(AND(Fact(fatigue="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(extreme_thirst="yes"), Fact(dizziness="yes")))
+        def askDehydration(self):
+            less_frequent_urination=yes_no("Are you having less frequent urination?", key="less_frequent_urination")
+            dark_urine=yes_no("Did the urine become dark?", key="dark_urine")
+            lethargy=yes_no("Are you feeling lethargic?", key="lethargy")
+            dry_mouth=yes_no("Is your mouth considerably dry?", key="dry_mouth")
+            count=0
+            for string in [less_frequent_urination, dark_urine, lethargy, dry_mouth]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=2:
+                symptoms = ["Fatigue", "Extreme thirst", "Dizziness", "Dark urine", "Lethargic feeling", "Dry mouth", "Less frequent urination"]
+                suggest_disease("Dehydration", symptoms)
+    
+        @Rule(AND(Fact(fatigue="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(muscle_weakness="yes")))
+        def askHypothoroidism(self):
+            depression=yes_no("Are you feeling depressed now a days?", key="depression")
+            constipation=yes_no("Are you experiencing constipation?", key="constipation")
+            feeling_cold=yes_no("Are you feeling cold?", key="feeling_cold")
+            dry_skin=yes_no("Has your skin became drier?", key="dry_skin")
+            dry_hair=yes_no("Is your hair too becoming dry and also thinner?", key="dry_hair")
+            weight_gain=yes_no("Did you gain your weight considerably?", key="weight_gain")
+            decreased_sweating=yes_no("Are you not sweating much as earlier?", key="decreased_sweating")
+            slowed_heartrate=yes_no("Did your heart rate slow down?", key="slow_heart_rate")
+            pain_joints=yes_no("Are you experiencing pain and stiffness in joints?", key="joint_stiffness")
+            hoarseness=yes_no("Is your voice changing abnormally?", key="hoarseness")
+            count=0
+            for string in [depression, constipation, feeling_cold, dry_skin, dry_hair, weight_gain, decreased_sweating, slowed_heartrate, pain_joints, hoarseness]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=7:
+                symptoms = ["Fatigue", "Muscle weakness", "Depression", "Constipation", "Cold feeling", "Dry skin", "Dry hair", "Weight gain", "Decreased sweating", "Slow heart rate", "Joint pains", "Hoarseness in voice"]
+                suggest_disease("Hypothyroidism", symptoms)
+
+        @Rule(AND(Fact(fatigue="yes"), Fact(fever="no"), Fact(short_breath="no"), Fact(muscle_weakness="yes")), salience=-10)
+        def askHyperthyroidism(self):
+            weight_loss=yes_no("Did you lose weight even though you are eating the same amount or more?", key="unintentional_weight_loss")
+            fast_heartbeat=yes_no("Is your heartbeat fast, pounding or irregular?", key="fast_heartbeat")
+            heat_intolerance=yes_no("Do you feel unusually hot or unable to tolerate warm weather?", key="heat_intolerance")
+            excess_sweating=yes_no("Are you sweating much more than you used to?", key="excess_sweating")
+            tremor=yes_no("Do your hands or fingers shake or tremble?", key="tremor")
+            anxiety=yes_no("Are you feeling nervous, anxious or unusually irritable?", key="anxiety")
+            sleep_trouble=yes_no("Are you having trouble falling asleep?", key="hyper_sleep_trouble")
+            frequent_bowel=yes_no("Are your bowel movements more frequent than before?", key="frequent_bowel")
+            count=0
+            for string in [weight_loss, fast_heartbeat, heat_intolerance, excess_sweating, tremor, anxiety, sleep_trouble, frequent_bowel]:
+                if string=="yes":
+                    count+=1
+
+            if count>=5:
+                symptoms = ["Fatigue", "Muscle weakness", "Unintentional weight loss", "Rapid heartbeat", "Heat intolerance", "Excessive sweating", "Hand tremors", "Anxiety and irritability", "Trouble sleeping", "Frequent bowel movements"]
+                suggest_disease("Hyperthyroidism", symptoms)
+
+        @Rule(AND(Fact(short_breath="yes"), Fact(fever="no")))
+        def askRelatedToShortBreath(self):
+            self.declare(Fact(back_joint_pian=yes_no("Are you having back and joint pain?", key="back_joint_pain")))
+            self.declare(Fact(chest_pain=yes_no("Are you having chest pain?", key="chest_pain")))
+            self.declare(Fact(cough=yes_no("Are you having cough frequently?", key="cough")))
+            self.declare(Fact(fatigue=yes_no("Are you feeling fatigue?", key="fatigue")))
+            self.declare(Fact(headache=yes_no("Are you having headache?", key="headache")))
+            self.declare(Fact(pain_arms=yes_no("Are you having pain in arms and shoulders?", key="pain_arms")))
+    
+        @Rule(AND(Fact(short_breath="yes"), Fact(fever="no"), Fact(back_joint_pian="yes")))
+        def askObesity(self):
+            sweating=yes_no("Are you sweating more than normal?", key="sweating")
+            snoring=yes_no("Did you develop a habit of snoring?", key="snoring")
+            sudden_physical=yes_no("Are you not able to cope up with sudden physical activity?", key="sudden_physical")
+            tired=yes_no("Are you feeling tired every day withour doing much work?", key="tired_small_walk")
+            isolatd=yes_no("Are you feeling isolated?", key="isolated")
+            confidence=yes_no("Are you having low confidence and self esteem in day to day activities?", key="low_confidence")
+            count=0
+            for string in [sweating, snoring, sudden_physical, tired, isolatd, confidence]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=4:
+                symptoms = ["Shortness in breath", "Back and Joint pains", "High sweating", "Snoring habit", "Tireness", "Low confidence"]
+                suggest_disease("Obesity", symptoms)
+    
+        @Rule(AND(Fact(short_breath="yes"), Fact(fever="no"), Fact(chest_pain="yes"), Fact(fatigue="yes"), Fact(headache="yes")))
+        def askAnemia(self):
+            irregular_heartbeat=yes_no("Are you experiencing irregular heartbeat?", key="irregular_heartbeat")
+            weakness=yes_no("Are you feeling weak?", key="weakness")
+            pale_skin=yes_no("Has your skin turned pale or yellowish?", key="pale_skin")
+            lightheadedness=yes_no("Are you having dizziness or light headedness?", key="lightheadedness")
+            cold_hands_feet=yes_no("Are you having cold hands and feet?", key="cold_limbs")
+            count=0
+            for string in [irregular_heartbeat, weakness, pale_skin, lightheadedness, cold_hands_feet]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=3:
+                symptoms = ["Shortness in breath", "Chest pain", "Fatigue", "Headache", "Irregular heartbeat", "Weakness", "Pale skin", "Dizziness", "Cold limbs"]
+                suggest_disease("Anemia", symptoms)
+    
+        @Rule(AND(Fact(short_breath="yes"), Fact(fever="no"), Fact(chest_pain="yes"), Fact(fatigue="yes"), Fact(pain_arms="yes")))
+        def askCAD(self):
+            heaviness=yes_no("Did you have feeling of heaviness or tightness, usually in the centre of the chest, which may spread to the arms, neck, jaw, back or stomach?", key="heaviness")
+            sweating=yes_no("Are you sweating frequently?", key="sweating")
+            dizziness=yes_no("Are you feeling dizzy?", key="dizziness")
+            burning=yes_no("Do you feel burning sensation near heart?", key="burning_heart")
+            count=0
+            for string in [heaviness, sweating, dizziness, burning]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=2:
+                symptoms = ["Shortness in breath", "Chest pain", "Fatigue", "Arm pains", "Heaviness", "Sweating", "Diziness", "Burning sensation near heart"]
+                suggest_disease("Coronary Arteriosclerosis", symptoms)
+    
+        @Rule(AND(Fact(short_breath="yes"), Fact(fever="no"), Fact(chest_pain="yes"), Fact(cough="yes")))
+        def askAsthma(self):
+            Wheezing=yes_no("Are you having a whistling or wheezing sound when exhaling?", key="wheezing")
+            sleep_trouble=yes_no("Are you having trouble sleeping caused by shortness of breath, coughing or wheezing?", key="sleep_trouble")
+            count=0
+            for string in [Wheezing, sleep_trouble]:
+                if string=="yes":
+                    count+=1
+    
+            if count>=1:
+                symptoms = ["Shortness in breath", "Chest pain", "Cough", "Wheezing sound when exhaling", "Trouble sleep because of coughing or wheezing"]
+                suggest_disease("Asthma", symptoms)
+
+        @Rule(AND(Fact(short_breath="yes"), Fact(fever="no"), Fact(cough="yes")), salience=-10)
+        def askCOPD(self):
+            long_term_cough=yes_no("Have you had a cough that brings up mucus on most days for several months?", key="long_term_cough")
+            breathless_activity=yes_no("Do you become breathless during everyday activities such as walking or climbing stairs?", key="breathless_activity")
+            chest_wheeze=yes_no("Do you hear a whistling or wheezing sound in your chest?", key="chest_wheeze")
+            smoking=yes_no("Do you smoke, or did you smoke regularly for many years?", key="smoking")
+            frequent_infections=yes_no("Do you catch chest infections often, and do they take long to clear?", key="frequent_chest_infections")
+            chest_tightness=yes_no("Are you feeling tightness in your chest?", key="chest_tightness")
+            bluish=yes_no("Have your lips or fingernails ever looked bluish or grey?", key="bluish")
+            count=0
+            for string in [long_term_cough, breathless_activity, chest_wheeze, smoking, frequent_infections, chest_tightness, bluish]:
+                if string=="yes":
+                    count+=1
+
+            if count>=4:
+                symptoms = ["Shortness in breath", "Long lasting cough with mucus", "Breathlessness on daily activity", "Wheezing in chest", "Smoking history", "Frequent chest infections", "Tightness in chest"]
+                suggest_disease("COPD", symptoms)
