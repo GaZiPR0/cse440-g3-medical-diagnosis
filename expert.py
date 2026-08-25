@@ -219,3 +219,296 @@ def suggest_disease(disease, symptoms):
             print(f"HTML file for {disease} not found.")
 
     raise SystemExit
+
+
+def _selected(value):
+    """Multi-select answers arrive as a list; "none" means nothing was picked."""
+    if value is None:
+        return []
+    if not isinstance(value, list):
+        value = [value]
+    return [v for v in value if v != "none"]
+
+
+def diagnose_from_answers(answers):
+    """Pure diagnosis helper shared by the web app and console expert system."""
+    a = answers
+    fevers = _selected(a.get("fever_type"))
+    no_fever = "fever_type" in a and not fevers
+    normal_fever = "Normal Fever" in fevers
+    low_fever = "Low Fever" in fevers
+    high_fever = "High Fever" in fevers
+
+    vomits = _selected(a.get("vomit_type"))
+    severe_vomiting = "Severe Vomiting" in vomits
+    normal_vomiting = "Normal Vomiting" in vomits
+
+    def yes_count(*keys):
+        return sum(1 for key in keys if a.get(key) == "yes")
+
+    if a.get("red_eyes") == "yes":
+        if a.get("eye_crusting") == "yes" or a.get("eye_burn") == "yes":
+            return "Conjunctivitis", ["Red eyes", "Burning/crusting in eyes", "Eye discomfort"]
+        if a.get("eye_irritation") == "yes":
+            return "Eye Allergy", ["Red eyes", "Eye irritation", "Allergic reaction"]
+        if (
+            a.get("eye_burn") == "no"
+            and a.get("eye_crusting") == "no"
+            and a.get("eye_irritation") == "no"
+            and yes_count("gritty", "screen_strain", "eye_watering", "blink_clears", "light_wind") >= 3
+        ):
+            return "Dry Eye Syndrome", [
+                "Red eyes", "Gritty sandy feeling", "Dry tired eyes after screen use",
+                "Excessive watering", "Blurred vision that clears on blinking",
+                "Sensitivity to light and wind"
+            ]
+
+    if (
+        a.get("diabetes") == "yes"
+        and a.get("fatigue") == "yes"
+        and a.get("extreme_thirst") == "yes"
+        and a.get("extreme_hunger") == "yes"
+        and yes_count(
+            "frequent_urination", "weight_loss", "irritability",
+            "blurred_vision", "frequent_infections", "slow_healing_sores"
+        ) >= 3
+    ):
+        return "Diabetes", [
+            "Fatigue", "Extreme thirst", "Extreme hunger", "Weight loss",
+            "Blurred vision", "Frequent infections", "Frequent urination",
+            "Irritability", "Slow healing of sores"
+        ]
+
+    if (
+        a.get("hypertension") == "yes"
+        and a.get("short_breath") == "yes"
+        and a.get("chest_pain") == "yes"
+        and yes_count("heaviness", "sweating", "dizziness", "burning_heart") >= 2
+    ):
+        return "Coronary Arteriosclerosis", [
+            "Shortness of breath", "Chest pain", "Heaviness",
+            "Sweating", "Dizziness", "Burning sensation near heart"
+        ]
+
+    if (
+        a.get("heart_disease") == "yes"
+        and a.get("fatigue") == "yes"
+        and a.get("short_breath") == "yes"
+        and yes_count(
+            "irregular_heartbeat", "weakness", "pale_skin",
+            "lightheadedness", "cold_limbs"
+        ) >= 3
+    ):
+        return "Anemia", [
+            "Shortness of breath", "Fatigue", "Irregular heartbeat",
+            "Weakness", "Pale skin", "Dizziness", "Cold limbs"
+        ]
+
+    if (
+        a.get("thyroid") == "yes"
+        and a.get("fatigue") == "yes"
+        and yes_count(
+            "depression", "constipation", "feeling_cold", "dry_skin",
+            "dry_hair", "weight_gain", "decreased_sweating",
+            "slow_heart_rate", "joint_stiffness", "hoarseness"
+        ) >= 5
+    ):
+        return "Hypothyroidism", [
+            "Fatigue", "Depression", "Constipation", "Cold feeling",
+            "Dry skin", "Dry hair", "Weight gain", "Decreased sweating",
+            "Slow heart rate", "Joint pains", "Hoarseness in voice"
+        ]
+
+    if high_fever and yes_count(
+        "severe_headache", "eyes_pain", "muscle_pain",
+        "severe_joint_pain", "nausea", "rashes", "bleeding"
+    ) >= 5:
+        return "Dengue", [
+            "High fever", "Headache", "Eye pain", "Muscle pain",
+            "Joint pains", "Nausea", "Rashes", "Bleeding"
+        ]
+
+    if high_fever and yes_count(
+        "step_fever", "abdominal_pain", "bowel_change", "rose_spots",
+        "severe_weakness", "unsafe_food", "swollen_belly"
+    ) >= 5:
+        return "Typhoid", [
+            "High fever rising day by day", "Continuous abdominal pain",
+            "Constipation or diarrhoea", "Rose coloured spots",
+            "Extreme weakness", "Unsafe food or water", "Tender swollen abdomen"
+        ]
+
+    if high_fever and yes_count(
+        "swollen_joints", "sudden_joint_onset", "morning_stiffness",
+        "chik_rash", "lasting_tiredness", "muscle_headache"
+    ) >= 4:
+        return "Chikungunya", [
+            "High fever", "Swollen and painful joints",
+            "Sudden onset of joint pain", "Morning joint stiffness",
+            "Skin rash", "Lasting tiredness", "Headache with muscle pain"
+        ]
+
+    if low_fever and yes_count(
+        "headache", "persistent_cough", "wheezing", "chills",
+        "chest_tightness", "sore_throat", "body_aches",
+        "breathlessness", "blocked_nose"
+    ) >= 7:
+        return "Bronchitis", [
+            "Slight fever", "Cough", "Wheezing", "Chills",
+            "Tightness in chest", "Sore throat", "Body aches",
+            "Headache", "Breathlessness", "Blocked nose"
+        ]
+
+    if low_fever and yes_count(
+        "facial_pain", "worse_bending", "thick_mucus", "reduced_smell",
+        "tooth_pain", "bad_breath", "morning_headache"
+    ) >= 4:
+        return "Sinusitis", [
+            "Slight fever", "Facial pain and pressure",
+            "Pain worse on bending forward", "Thick nasal discharge",
+            "Reduced sense of smell", "Upper tooth pain",
+            "Bad breath", "Morning headache"
+        ]
+
+    if low_fever and yes_count(
+        "sneezing", "runny_nose", "mild_sore_throat",
+        "watery_eyes", "gradual_mild"
+    ) >= 3:
+        return "Common Cold", [
+            "Slight fever", "Frequent sneezing", "Runny nose with clear mucus",
+            "Mild sore throat", "Watery eyes", "Mild symptoms with slow onset"
+        ]
+
+    if a.get("appetite_loss") == "yes" and no_fever and a.get("short_breath") != "yes" and a.get("fatigue") != "yes":
+        if a.get("joint_pain") == "yes" and yes_count(
+            "stiff_joint", "swell_joint", "red_skin_joint",
+            "decreased_range", "tired_small_walk"
+        ) >= 3:
+            return "Arthritis", [
+                "Stiff joints", "Swelling in joints", "Joint pains",
+                "Red skin around joints", "Tiredness",
+                "Reduced movement near joints", "Appetite loss"
+            ]
+
+        if severe_vomiting and yes_count(
+            "burning_stomach", "bloating", "mild_nausea",
+            "weight_loss", "abdominal_pain"
+        ) >= 3:
+            return "Peptic Ulcer", [
+                "Appetite loss", "Severe vomiting",
+                "Burning sensation in stomach", "Bloated stomach",
+                "Nausea", "Weight loss", "Abdominal pain"
+            ]
+
+        if normal_vomiting and yes_count(
+            "nausea", "fullness", "bloating",
+            "abdominal_pain", "indigestion", "gnawing"
+        ) >= 4:
+            return "Gastritis", [
+                "Appetite loss", "Vomiting", "Nausea",
+                "Fullness near abdomen", "Bloating near abdomen",
+                "Abdominal pain", "Indigestion", "Gnawing pain near abdomen"
+            ]
+
+    if a.get("fatigue") == "yes" and no_fever and a.get("short_breath") != "yes":
+        if a.get("extreme_thirst") == "yes" and a.get("extreme_hunger") == "yes" and yes_count(
+            "frequent_urination", "weight_loss", "irritability",
+            "blurred_vision", "frequent_infections", "slow_healing_sores"
+        ) >= 4:
+            return "Diabetes", [
+                "Fatigue", "Extreme thirst", "Extreme hunger", "Weight loss",
+                "Blurred vision", "Frequent infections", "Frequent urination",
+                "Irritability", "Slow healing of sores"
+            ]
+
+        if a.get("extreme_thirst") == "yes" and a.get("dizziness") == "yes" and yes_count(
+            "less_frequent_urination", "dark_urine", "lethargy", "dry_mouth"
+        ) >= 2:
+            return "Dehydration", [
+                "Fatigue", "Extreme thirst", "Dizziness", "Dark urine",
+                "Lethargic feeling", "Dry mouth", "Less frequent urination"
+            ]
+
+        if a.get("muscle_weakness") == "yes" and yes_count(
+            "depression", "constipation", "feeling_cold", "dry_skin",
+            "dry_hair", "weight_gain", "decreased_sweating",
+            "slow_heart_rate", "joint_stiffness", "hoarseness"
+        ) >= 7:
+            return "Hypothyroidism", [
+                "Fatigue", "Muscle weakness", "Depression", "Constipation",
+                "Cold feeling", "Dry skin", "Dry hair", "Weight gain",
+                "Decreased sweating", "Slow heart rate", "Joint pains",
+                "Hoarseness in voice"
+            ]
+
+        if a.get("muscle_weakness") == "yes" and yes_count(
+            "unintentional_weight_loss", "fast_heartbeat", "heat_intolerance",
+            "excess_sweating", "tremor", "anxiety", "hyper_sleep_trouble",
+            "frequent_bowel"
+        ) >= 5:
+            return "Hyperthyroidism", [
+                "Fatigue", "Muscle weakness", "Unintentional weight loss",
+                "Rapid heartbeat", "Heat intolerance", "Excessive sweating",
+                "Hand tremors", "Anxiety and irritability", "Trouble sleeping",
+                "Frequent bowel movements"
+            ]
+
+    if a.get("short_breath") == "yes" and no_fever:
+        if a.get("back_joint_pain") == "yes" and yes_count(
+            "sweating", "snoring", "sudden_physical",
+            "tired_small_walk", "isolated", "low_confidence"
+        ) >= 4:
+            return "Obesity", [
+                "Shortness of breath", "Back and joint pains",
+                "High sweating", "Snoring habit", "Tiredness",
+                "Low confidence"
+            ]
+
+        if (
+            a.get("chest_pain") == "yes"
+            and a.get("fatigue") == "yes"
+            and a.get("headache") == "yes"
+            and yes_count(
+                "irregular_heartbeat", "weakness", "pale_skin",
+                "lightheadedness", "cold_limbs"
+            ) >= 3
+        ):
+            return "Anemia", [
+                "Shortness of breath", "Chest pain", "Fatigue",
+                "Headache", "Irregular heartbeat", "Weakness",
+                "Pale skin", "Dizziness", "Cold limbs"
+            ]
+
+        if (
+            a.get("chest_pain") == "yes"
+            and a.get("fatigue") == "yes"
+            and a.get("pain_arms") == "yes"
+            and yes_count("heaviness", "sweating", "dizziness", "burning_heart") >= 2
+        ):
+            return "Coronary Arteriosclerosis", [
+                "Shortness of breath", "Chest pain", "Fatigue",
+                "Arm pains", "Heaviness", "Sweating",
+                "Dizziness", "Burning sensation near heart"
+            ]
+
+        if (
+            a.get("chest_pain") == "yes"
+            and a.get("cough") == "yes"
+            and yes_count("wheezing", "sleep_trouble") >= 1
+        ):
+            return "Asthma", [
+                "Shortness of breath", "Chest pain", "Cough",
+                "Wheezing sound when exhaling",
+                "Trouble sleeping because of coughing or wheezing"
+            ]
+
+        if a.get("cough") == "yes" and yes_count(
+            "long_term_cough", "breathless_activity", "chest_wheeze",
+            "smoking", "frequent_chest_infections", "chest_tightness", "bluish"
+        ) >= 4:
+            return "COPD", [
+                "Shortness of breath", "Long lasting cough with mucus",
+                "Breathlessness on daily activity", "Wheezing in chest",
+                "Smoking history", "Frequent chest infections",
+                "Tightness in chest"
+            ]
